@@ -1,0 +1,239 @@
+{
+    map         "mp_bo2_town"
+    longname    "^3Green Run"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "Town of Black Ops 2 Tranzit Green Run Map"
+    mapimage    "loadscreen_mp_bo2_town"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_composite"
+    environment "desert"
+}
+
+{
+    map         "mp_bsf_dead_night"
+    longname    "^3Nacht der Untoten"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "Modified Nacht der Untoten Map \n There is a hidden tunnel behind the wall"
+    mapimage    "loadscreen_mp_bsf_dead_night"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_composite"
+    environment "desert"
+}
+
+{
+    map         "mp_highrise"
+    longname    "MPUI_HIGHRISE"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_HIGHRISE"
+    mapimage    "preview_mp_highrise"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "us_army"
+    axischar    "opforce_airborne"
+    environment "urban"
+}
+
+{
+    map         "mp_checkpoint"
+    longname    "MPUI_CHECKPOINT"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_checkpoint"
+    mapimage    "preview_mp_checkpoint"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "seals_udt"
+    axischar    "opforce_composite"
+    environment "urban"
+}
+
+{
+    map         "mp_nightshift"
+    longname    "MPUI_RAID"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_nightshift"
+    mapimage    "preview_mp_nightshift"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "us_army"
+    axischar    "opforce_airborne"
+    environment "urban"
+}
+
+{
+    map         "mp_brecourt"
+    longname    "MPUI_WASTELAND"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_BRECOURT"
+    mapimage    "preview_mp_brecourt"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_forest"
+    axischar    "opforce_airborne"
+    environment "forest"
+}
+
+{
+    map         "mp_derail"
+    longname    "MPUI_DERAIL"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_DERAIL"
+    mapimage    "preview_mp_derail"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_arctic"
+    axischar    "opforce_arctic"
+    environment "arctic"
+}
+
+{
+    map         "mp_subbase"
+    longname    "MPUI_SUBBASE"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_SUBBASE"
+    mapimage    "preview_mp_subbase"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "seals_udt"
+    axischar    "opforce_arctic"
+    environment "urban"
+}
+
+{
+    map         "mp_rundown"
+    longname    "MPUI_RUNDOWN"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_RUNDOWN"
+    mapimage    "preview_mp_rundown"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "militia"
+    environment "desert"
+}
+
+{
+    map         "mp_boneyard"
+    longname    "MPUI_BONEYARD"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_BONEYARD"
+    mapimage    "preview_mp_boneyard"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_composite"
+    environment "desert"
+}
+
+{
+    map         "mp_afghan"
+    longname    "MPUI_AFGHAN"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_AFGHAN"
+    mapimage    "preview_mp_afghan"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_composite"
+    environment "desert"
+}
+
+{
+    map         "mp_terminal"
+    longname    "MPUI_TERMINAL"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_TERMINAL"
+    mapimage    "preview_mp_terminal"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "us_army"
+    axischar    "opforce_airborne"
+    environment "urban"
+}
+
+{
+    map         "mp_rust"
+    longname    "MPUI_RUST"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_RUST"
+    mapimage    "preview_mp_rust"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_composite"
+    environment "desert"
+}
+
+{
+    map         "mp_storm"
+    longname    "PATCH_STORM"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "PATCH_DESC_MAP_STORM"
+    mapimage    "preview_mp_storm"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "opforce_airborne"
+    environment "urban"
+}
+
+{
+    map         "mp_overgrown"
+    longname    "MPUI_OVERGROWN"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_OVERGROWN"
+    mapimage    "preview_mp_overgrown"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_forest"
+    axischar    "opforce_airborne"
+    environment "forest"
+}
+
+{
+    map         "mp_nuked"
+    longname    "MPUI_NUKED"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_NUKED"
+    mapimage    "preview_mp_nuked"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "us_army"
+    axischar    "opforce_airborne"
+    environment "desert"
+}
+
+{
+    map         "mp_estate_tropical"
+    longname    "MPUI_ESTATE"
+    gametype	"zombies"
+    description "MPUI_DESC_MAP_ESTATE"
+    mapimage    "preview_mp_estate"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_forest"
+    axischar    "militia"
+    environment "forest"
+}
+
+{
+    map         "mp_crash_tropical"
+    longname    "MPUI_CRASH"
+    gametype	"zombies"
+    description "MPUI_DESC_MAP_CRASH"
+    mapimage    "preview_mp_crash"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_forest"
+    axischar    "militia"
+    environment "urban"
+}
+
+{
+    map         "mp_fav_tropical"
+    longname    "MPUI_FAVELA"
+    gametype	"zombies"
+    description "MPUI_DESC_MAP_FAV_TROPICAL"
+    mapimage    "preview_mp_favela"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_desert"
+    axischar    "militia"
+    environment "urban"
+}
+
+{
+    map         "mp_bloc_sh"
+    longname    "MPUI_BLOC_SH"
+    gametype	"dm dom sd sab war koth oneflag arena dd vip ctf gtnw oitc gg ss conf cranked infected tdef"
+    description "MPUI_DESC_MAP_BLOC_SH"
+    mapimage    "preview_mp_bloc_sh"
+    mapoverlay  "compass_overlay_map_blank"
+    allieschar  "socom_141_forest"
+    axischar    "opforce_airborne"
+    environment "forest"
+}

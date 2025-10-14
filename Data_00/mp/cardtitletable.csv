@@ -1,0 +1,150 @@
+cardtitle_default,,cardtitle_camo_desert,1,1,1,,default
+cardtitle_ssdd,,cardtitle_camo_woodland,1,1,1,,default
+cardtitle_20,,cardtitle_camo_arctic,1,1,1,,default
+cardtitle_30,,cardtitle_camo_digital,1,1,1,,default
+cardtitle_phoenixrising,,cardtitle_camo_urban,1,1,1,ch_laststandvet,11 - Prestige
+cardtitle_evildead,,cardtitle_camo_bluetiger,1,1,1,ch_bothbarrels,9 - Elite
+cardtitle_lastresort,,cardtitle_camo_redtiger,1,1,1,ch_lastresort,6 - Finishing Moves
+cardtitle_livingdead,,cardtitle_camo_fall,1,1,1,ch_livingdead,99 - Secret
+cardtitle_flatliner,,cardtitle_mw2_black,1,1,1,ch_thebrink,9 - Elite
+cardtitle_dishtherock,,cardtitle_snowmobile,1,1,1,# assists,1 - basic
+cardtitle_lonewolf,,cardtitle_sniper_2,1,1,1,#FFA Victor,2 - game modes
+cardtitle_flyswatter,,cardtitle_helicopters_1,1,1,1,# shoot down chopper,1 - basic
+cardtitle_nbk,,cardtitle_sniper_1,1,1,1,# ch_nbk,5 - Precision
+cardtitle_timeontarget,,cardtitle_bombs2,1,1,1,#airstrike-prec,3 - killstreak
+cardtitle_lowprofile,,cardtitle_sniper_4,1,1,1,# prone shot,1 - basic
+cardtitle_grassyknoll,,cardtitle_ghillie,1,1,1,ch_ghillie_3,
+cardtitle_destroyer,,cardtitle_explosion,1,1,1,#SD,2 - game modes
+cardtitle_shotdown,,cardtitle_cowboy,1,1,1,# crouch shot,1 - basic
+cardtitle_absenteekiller,,cardtitle_machinegun,1,1,1,ch_absentee,6 - Finishing Moves
+cardtitle_rainoffire,,cardtitle_apocalypse,1,1,1,#air2ground-hellfire,3 - killstreak
+cardtitle_bombshell,,cardtitle_moab,1,1,1,#bomb down,2 - game modes
+cardtitle_20a,,cardtitle_general,1,1,1,,LEVEL UP
+cardtitle_rollingthunder,,cardtitle_thebomb,1,1,1,# airstrikes,3 - killstreak
+cardtitle_silentstrike,,cardtitle_silencer,1,1,1,ch_deadsilence_pro_4,0 - Perks
+cardtitle_plasticman,,cardtitle_dynamite,1,1,1,# c4shot,4 - Equipment
+cardtitle_jumpjet,,cardtitle_harrier,1,1,1,#35mill-harrier,3 - killstreak
+cardtitle_angelofdeath,,cardtitle_ac130_1,1,1,1,# ac130,3 - killstreak
+cardtitle_planewhisperer,,cardtitle_mig15,1,1,1,# airstrikes,3 - killstreak
+cardtitle_hardtarget,,cardtitle_tank,1,1,1,# ch_airborne,5 - Precision
+cardtitle_tangodown,,cardtitle_smoke_em,1,1,1,# crouch shot,1 - basic
+cardtitle_fullarsenal,,cardtitle_at4_rocket,1,1,1,ch_onemanarmy_pro_4,0 - Perks
+cardtitle_earlydetection,,cardtitle_heartbeat,1,1,1,#bomb prevent,2 - game modes
+cardtitle_gettothechoppa,,cardtitle_cobra,1,1,1,# heli minigun - chop gunner,3 - killstreak
+cardtitle_dzclear,,cardtitle_pavelow_side,1,1,1,#airmail-carepack,3 - killstreak
+cardtitle_blackout,,cardtitle_pavelow,1,1,1,# heli flares - pavelow,3 - killstreak
+cardtitle_badaboom,,cardtitle_rpg,1,1,1,# ch_multirpg_2,5 - Precision
+cardtitle_1bullet2kills,,cardtitle_bullet,1,1,1,# ch_collateraldamage,5 - Precision
+cardtitle_sigint,,cardtitle_satellite,1,1,1,#interference-counteruav,3 - killstreak
+cardtitle_booyah,,cardtitle_buckshot,1,1,1,# ch_multifrag_2,5 - Precision
+cardtitle_boomheadshot,,cardtitle_bloodsplat,1,1,1,# ch_expert_lmg_3,5 - Precision
+cardtitle_intergalactic,,cardtitle_space_iss01,1,1,1,#sabotage,2 - game modes
+cardtitle_clickclickboom,,cardtitle_snubnose,1,1,0.7,ch_clickclickboom,99 - Secret
+cardtitle_itspersonal,,cardtitle_hello,1,1,1,# its_personal,4 - Equipment
+cardtitle_ambush,,cardtitle_kingsnake,1,1,0.7,# ch_multiclaymore_3,5 - Precision
+cardtitle_takeastab,,cardtitle_swordmaster_1,1,1,1,# carnie - knife,4 - Equipment
+cardtitle_highlander,,cardtitle_bloodysword,1,1,1,# ch_flawless,5 - Precision
+cardtitle_bob,,cardtitle_horsemen,1,1,1,#Team Player,2 - game modes
+cardtitle_sprayandpray,,cardtitle_nvg_high,1,1,1,# x-ray vision,1 - basic
+cardtitle_santaclaus,,cardtitle_benjamins,1,1,1,# airdrops,3 - killstreak
+cardtitle_pinpuller,,cardtitle_bomber_pinup_girl,1,1,1,# ch_multifrag_3,5 - Precision
+cardtitle_bullseye,,cardtitle_tomahawk,1,1,1,# bullseye -semtex,4 - Equipment
+cardtitle_ghostrider,,cardtitle_zero,1,1,1,#air2ground-hellfire,3 - killstreak
+cardtitle_mastatdon,,cardtitle_angry_dragon,1,1,1,ch_starplayer,9 - Elite
+cardtitle_fireforget,,cardtitle_aircraft_carriers,1,1,1,#sentry,3 - killstreak
+cardtitle_moneyshot,,cardtitle_money01,1,1,1,ch_moneyshot,8 - Payback
+cardtitle_doubleagent,,cardtitle_spy_1,1,1,1,ch_coldblooded_pro_6,0 - Perks
+cardtitle_philanthropist,,cardtitle_blimp,1,1,1,#emergency air,3 - killstreak
+cardtitle_harderthey,,cardtitle_cemetary,1,1,1,ch_thehardertheyfall,10 - Intimidation
+cardtitle_hijacker,,cardtitle_buggy,1,1,1,ch_hijacker_2,99 - Secret
+cardtitle_mach5,,cardtitle_drifting,1,1,1,# mach5 - ch_surgical_smg,5 - Precision
+cardtitle_drifter,,cardtitle_racer_rice_rocket,1,1,1,# vandalism,1 - basic
+cardtitle_getreal,,cardtitle_hazard_3,1,1,1,#hardcore TDM,2 - game modes
+cardtitle_bowdown,,cardtitle_samurai_lv3,1,1,1,# prone shot,1 - basic
+cardtitle_backsmasher,,cardtitle_tsuenami,1,1,1,ch_backsmasher,
+cardtitle_theextreme,,cardtitle_skateboard,1,1,1,#mvp hardcore,2 - game modes
+cardtitle_doubledown,,cardtitle_roll_hard_six,1,1,1,ch_bling_pro_4,0 - Perks
+cardtitle_publicenemy,,cardtitle_shark,1,1,1,#MVP TDM,2 - game modes
+cardtitle_accidentprone,,cardtitle_cripple,1,1,1,# base jump,1 - basic
+cardtitle_no,,cardtitle_spankpaddle,1,1,1,ch_no,99 - Secret
+cardtitle_juggernaut,,cardtitle_bandaid,1,1,1,# masterblaster -blast shield,4 - Equipment
+cardtitle_cloakanddagger,,cardtitle_magic,1,1,1,# carnie - knife,4 - Equipment
+cardtitle_lightsout,,cardtitle_straight_blast,1,1,1,ch_thinkfastflash,7 - Humiliation
+cardtitle_jointops,,cardtitle_weed_3,1,1,1,# assists,1 - basic
+cardtitle_comfortablynumb,,cardtitle_butterfly_1,1,1,1,ch_thenumb,99 - Secret
+cardtitle_perfectionist,,cardtitle_flower_3,1,1,1,# perfectionist - ch_surgical_sniper,5 - Precision
+cardtitle_voyeur,,cardtitle_lingerie_1,1,1,0.7,#exposed-uav,3 - killstreak
+cardtitle_companioncrate,,cardtitle_cute_pink_2,1,1,1,#airmail-carepack,3 - killstreak
+cardtitle_fragout,,cardtitle_cute_green_1,1,1,1,# grenade,4 - Equipment
+cardtitle_toxicavenger,,cardtitle_zombie_3,1,1,1,ch_radiationsickness,99 - Secret
+cardtitle_friendswith,,cardtitle_rainbows_3,1,1,1,ch_resourceful,9 - Elite
+cardtitle_martyr,,cardtitle_eyeball_3,1,1,1,ch_martyr,99 - Secret
+cardtitle_idthief,,cardtitle_operations,1,1,1,ch_identitytheft,8 - Payback
+cardtitle_tacticaldeletion,,cardtitle_gears_3,1,1,0.7,# tacticaldeletion,4 - Equipment
+cardtitle_pushindaisy,,cardtitle_pushingupdaisies,1,1,0.7,# goodbye,1 - basic
+cardtitle_blingbling,,cardtitle_4thofjuly_1,1,1,1,ch_bling_pro_5,0 - Perks
+cardtitle_straightup,,cardtitle_graffiti_02,1,1,1,#35mill-harrier,3 - killstreak
+cardtitle_ninja,,cardtitle_dragon_kick,1,1,1,ch_extendedmelee_pro_5,0 - Perks
+cardtitle_squawkbox,,cardtitle_chicken,1,1,1,#attackheli,3 - killstreak
+cardtitle_jackinthebox,,cardtitle_cheese,1,1,1,# jackinthebox - ti,4 - Equipment
+cardtitle_clayback,,cardtitle_schooled,1,1,1,ch_breakbank,8 - Payback
+cardtitle_noobtuber,,cardtitle_hotdog,1,1,1,ch_ouch,7 - Humiliation
+cardtitle_endofline,,cardtitle_endofline_red,1,1,1,# nuke,3 - killstreak
+cardtitle_nolaststand,,iw5_cardtitle_lollipop_girl,1,1,1,,default
+cardtitle_flag_united_states,,cardtitle_flag_united_states,1,1,1,,100 - flags
+cardtitle_flag_uk,,cardtitle_flag_uk,1,1,1,,100 - flags
+cardtitle_flag_canada,,cardtitle_flag_canada,1,1,1,,100 - flags
+cardtitle_flag_australia,,cardtitle_flag_australia,1,1,1,,100 - flags
+cardtitle_flag_spain,,cardtitle_flag_spain,1,1,1,,100 - flags
+cardtitle_flag_austria,,cardtitle_flag_austria,1,1,1,,100 - flags
+cardtitle_flag_japan,,cardtitle_flag_japan,1,1,1,,100 - flags
+cardtitle_flag_brazil,,cardtitle_flag_brazil,1,1,1,,100 - flags
+cardtitle_flag_swiss,,cardtitle_flag_swiss,1,1,1,,100 - flags
+cardtitle_flag_russia,,cardtitle_flag_russia,1,1,1,,100 - flags
+cardtitle_flag_mexico,,cardtitle_flag_mexico,1,1,1,,100 - flags
+cardtitle_flag_france,,cardtitle_flag_france,1,1,1,,100 - flags
+cardtitle_flag_germany,,cardtitle_flag_germany,1,1,1,,100 - flags
+cardtitle_flag_italy,,cardtitle_flag_italy,1,1,1,,100 - flags
+cardtitle_flag_norway,,cardtitle_flag_norway,1,1,1,,100 - flags
+cardtitle_flag_greece,,cardtitle_flag_greece,1,1,1,,100 - flags
+cardtitle_flag_sweden,,cardtitle_flag_sweden,1,1,1,,100 - flags
+cardtitle_flag_ireland,,cardtitle_flag_ireland,1,1,1,,100 - flags
+cardtitle_flag_belgium,,cardtitle_flag_belgium,1,1,1,,100 - flags
+cardtitle_flag_finland,,cardtitle_flag_finland,1,1,1,,100 - flags
+cardtitle_flag_luxemburg,,cardtitle_flag_luxemburg,1,1,1,,100 - flags
+cardtitle_flag_czech,,cardtitle_flag_czech,1,1,1,,100 - flags
+cardtitle_flag_netherlands,,cardtitle_flag_netherlands,1,1,1,,100 - flags
+cardtitle_flag_newzealand,,cardtitle_flag_newzealand,1,1,1,,100 - flags
+cardtitle_flag_philippines,,cardtitle_flag_philippines,1,1,1,,100 - flags
+cardtitle_flag_poland,,cardtitle_flag_poland,1,1,1,,100 - flags
+cardtitle_flag_portugal,,cardtitle_flag_portugal,1,1,1,,100 - flags
+cardtitle_flag_denmark,,cardtitle_flag_denmark,1,1,1,,100 - flags
+cardtitle_flag_saudiarabia,,cardtitle_flag_saudiarabia,1,1,1,,100 - flags
+cardtitle_flag_singapore,,cardtitle_flag_singapore,1,1,1,,100 - flags
+cardtitle_flag_southafrica,,cardtitle_flag_southafrica,1,1,1,,100 - flags
+cardtitle_flag_southkorea,,cardtitle_flag_southkorea,1,1,1,,100 - flags
+cardtitle_flag_hongkong,,cardtitle_flag_hongkong,1,1,1,,100 - flags
+cardtitle_flag_india,,cardtitle_flag_india,1,1,1,,100 - flags
+cardtitle_flag_taiwan,,cardtitle_flag_taiwan,1,1,1,,100 - flags
+cardtitle_flag_united_arab_emirates,,cardtitle_flag_united_arab_emirates,1,1,1,,100 - flags
+cardtitle_flag_elsalvador,,cardtitle_flag_elsalvador,1,1,1,,100 - flags
+cardtitle_flag_china,,cardtitle_flag_china,1,1,1,,100 - flags
+cardtitle_flag_iran,,cardtitle_flag_iran,1,1,1,,100 - flags
+cardtitle_patriot,,cardtitle_flag_united_states,1,1,1,ch_predator_2,11 - Prestige
+cardtitle_fng,,cardtitle_flag_uk,1,1,1,,LEVEL UP
+cardtitle_greatwhite,,cardtitle_flag_canada,1,1,1,ch_flashbangvet_2,11 - Prestige
+cardtitle_continental,,cardtitle_flag_australia,1,1,1,ch_carpetbomber_2,11 - Prestige
+cardtitle_conquerer,,cardtitle_flag_spain,1,1,1,ch_spectre_2,11 - Prestige
+cardtitle_terminator,,cardtitle_flag_austria,1,1,1,ch_yourefired_2,11 - Prestige
+cardtitle_risingsun,,cardtitle_flag_japan,1,1,1,ch_jollygreengiant_2,11 - Prestige
+cardtitle_redeemer,,cardtitle_flag_brazil,1,1,1,ch_laststandvet_2,11 - Prestige
+cardtitle_neutral,,cardtitle_flag_swiss,1,1,1,ch_concussionvet_2,11 - Prestige
+cardtitle_prestige1,,cardtitle_assault_veteran,1,1,1,cardititle_prestige1,LEVEL UP
+cardtitle_prestige2,,cardtitle_tiger,1,1,1,cardtitle_prestige2,LEVEL UP
+cardtitle_prestige3,,cardtitle_stpatricks_3,1,1,1,cardtitle_prestige3,LEVEL UP
+cardtitle_prestige8,,cardtitle_spiderweb_hispeed,1,1,1,cardtitle_prestige8,LEVEL UP
+cardtitle_prestige9,,cardtitle_blackcat,1,1,1,cardtitle_prestige9,LEVEL UP
+cardtitle_prestige10,,cardtitle_assault_master,1,1,1,cardtitle_prestige10,LEVEL UP
+cardtitle_famas_marksman,,cardtitle_assault_marksman,1,1,1,# weapon,
+cardtitle_famas_expert,,cardtitle_assault_expert,1,1,1,# weapon,
+cardtitle_famas_sharpshooter,,cardtitle_assault_sharpshooter,1,1,1,# weapon,
