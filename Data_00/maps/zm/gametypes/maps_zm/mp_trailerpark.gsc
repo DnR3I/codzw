@@ -1,0 +1,85 @@
+#include maps\zm\gametypes\mapedit;
+
+CreateMap_mp_trailerpark()
+{
+	map = getDvar("mapname");
+	CreateCloudBank();
+	if(map == "mp_trailerpark")
+	{
+		level.spawns_humans[0] = (1659.5, -514.459, 1.99634);
+		CreatePerk("QuickRevive",(2004.75, -708.646, 8.40156),(0, 266.347, 0));
+		CreatePerk("Juggernog",(308.125, -1053.13, -6.20335),(0, 0.0933838, 0));
+		CreatePerk("SpeedCola",(-2506.29, -639.737, -19.4162),(0, 183.12, 0));
+		CreatePerk("DoubleTap",(-2018.88, 1424.13, 2.125),(0, 89.2804, 0));
+		CreatePerk("StaminUp",(-581.036, 719.807, 36.125),(0, 75.4926, 0));
+		CreateGum((175.021, 255.115, 3.77819),(0, 259.799, 0));
+		//CreatePerk(,(-603.535, -9.46331, 33.125),(0, -14.3921, 0));
+		thread CreateBox((-601.092, -505.892, 0.913435),(0, 265.721, 0));
+		CreateWeapon("kar98k_tactical_mp", (1321.01, -359.34, 31.125));
+		CreateWeapon("m21_fmj_zm", (57.7736, 1248.74, 5.73689));
+		CreateWeapon("stg44_mp", (-2261.58, 1231.65, -102.875));
+		CreatePap((1694.25, -2953.13, 8.125),(0, 0.873413, 0));
+		CreateBarrier((1763, -3212.74, 8.125),(1617.18, -3211.86, 69.4637));
+		thread createTeleporter((-114.477, 376.651, 16.025),(1688.52, -3143.93, 8.125),15);
+		level.spawns_zombies[0] = (1095.61, -1625.13, 7.12192);
+		level.spawns_zombies[1] = (781.329, -1323.33, -8.03683);
+		level.spawns_zombies[2] = (875.874, -739.505, -14.8611);
+		level.spawns_zombies[3] = (1080.02, -446.953, 4.29533);
+		level.spawns_zombies[4] = (1144.44, -1040.28, 4.61921);
+		level.spawns_zombies[5] = (1408.57, -1412.58, 2.125);
+		level.spawns_zombies[6] = (1710.44, -1294.72, 23.125);
+		level.spawns_zombies[7] = (1880.81, -1064.66, 23.125);
+		level.spawns_zombies[8] = (1893.26, -905.62, 22.125);
+		level.spawns_zombies[9] = (1355, -503.633, 31.125);
+		level.spawns_zombies[10] = (1682.29, -251.182, -5.32396);
+		level.spawns_zombies[11] = (1494.09, 87.3852, -0.352087);
+		level.spawns_zombies[12] = (1866.6, 444.895, 3.78797);
+		level.spawns_zombies[13] = (1037.31, 243.125, 2.69279);
+		level.spawns_zombies[14] = (1090.09, 845.244, 6.51079);
+		level.spawns_zombies[15] = (1383.98, 550.027, 1.84699);
+		level.spawns_zombies[16] = (744.131, 1151.88, 11.125);
+		level.spawns_zombies[17] = (327.921, 1129.62, 5.83746);
+		level.spawns_zombies[18] = (466.861, 1044.93, 4.11807);
+		level.spawns_zombies[19] = (9.94224, 590.404, 4.67595);
+		level.spawns_zombies[20] = (-374.732, 274.167, 5.625);
+		level.spawns_zombies[21] = (13.2843, 167.868, 1.24453);
+		level.spawns_zombies[22] = (103.61, -167.073, -3.31592);
+		level.spawns_zombies[23] = (755.188, -202.411, -5.00873);
+		level.spawns_zombies[24] = (-210.932, -525.394, -13.1884);
+		level.spawns_zombies[25] = (-121.142, -851.6, -12.223);
+		level.spawns_zombies[26] = (-198.684, -1286.13, -7.89347);
+		level.spawns_zombies[27] = (315.42, -1308.48, -8.66771);
+		level.spawns_zombies[28] = (-577.767, -977.899, -0.140853);
+		level.spawns_zombies[29] = (-439.067, -368.733, 2.14959);
+		level.spawns_zombies[30] = (-164.728, -253.17, 33.125);
+		level.spawns_zombies[31] = (-662.583, -96.1949, 33.125);
+		level.spawns_zombies[32] = (-728.857, -322.999, 3.625);
+		level.spawns_zombies[33] = (-740.876, 149.401, 2.66241);
+		level.spawns_zombies[34] = (-1386.62, -280.518, 6.16104);
+		level.spawns_zombies[35] = (-1379.04, -701.432, -5.875);
+		level.spawns_zombies[36] = (-626.572, -753.622, -8.3741);
+		level.spawns_zombies[37] = (-2141.25, -556.37, -15.0942);
+		level.spawns_zombies[38] = (-2236.89, 98.4992, -21.4481);
+		level.spawns_zombies[39] = (-2535.22, 253.94, -81.3017);
+		level.spawns_zombies[40] = (-2297.98, 913.009, -102.875);
+		level.spawns_zombies[41] = (-1914.12, 629.295, -2.26006);
+		level.spawns_zombies[42] = (-1905.6, 61.725, 24.398);
+		level.spawns_zombies[43] = (-1777.65, -299.515, 24.0145);
+		level.spawns_zombies[44] = (-2157.39, -191.417, 5.125);
+		level.spawns_zombies[45] = (-1619.84, 99.1509, 12.125);
+		level.spawns_zombies[46] = (-1447.18, 582.749, 6.97044);
+		level.spawns_zombies[47] = (-784.991, 702.54, 2.03144);
+		level.spawns_zombies[48] = (-545.518, 444.884, 36.125);
+		level.spawns_zombies[49] = (-448.847, 891.926, 36.125);
+		level.spawns_zombies[50] = (-301.705, 1176.76, 12.6028);
+		level.spawns_zombies[51] = (-907.276, 1161.67, 12.9267);
+		level.spawns_zombies[52] = (-1383.52, 989.1, 13.0525);
+		level.spawns_zombies[53] = (-1379.33, 1386.35, 0.491212);
+		level.spawns_zombies[54] = (-1682.26, 1592.64, 2.125);
+		level.spawns_zombies[55] = (-1766.02, 1367.19, 2.125);
+		level.spawns_zombies[56] = (-1904.39, 1124.59, -2.61979);
+		level.spawns_zombies[57] = (-1594.49, 891.609, 1.88155);
+		level.spawns_zombies[58] = (-1025.13, -241.116, 6.125);
+		level.spawns_zombies[59] = (-1186.96, 225.442, 31.125);
+	}
+}
