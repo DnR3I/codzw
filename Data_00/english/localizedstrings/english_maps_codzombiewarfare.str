@@ -1,0 +1,318 @@
+VERSION			"1"
+FILENOTES		"Official Call of Duty ZOMBIE WARFARE localized strings"
+
+REFERENCE		DESC_COD4MAPS
+LANG_ENGLISH		"^1Who wants to ^1feel the sensation of a good ^1zombie mode on the maps of COD4 MODERN ^1WARFARE !"
+
+REFERENCE		DESC_MW2MAPS
+LANG_ENGLISH		"^1Between us friends who have always dreamed of ^1playing the multiplayer maps in zombie version ^1of that of ^1COD MODERN WARFARE 2 ?"
+
+REFERENCE		DESC_MW3MAPS
+LANG_ENGLISH		"^1Between us friends who have always dreamed of ^1playing the multiplayer maps in zombie version ^1of that of ^1COD MODERN WARFARE 3 ?"
+
+REFERENCE		DESC_WAWMAPS
+LANG_ENGLISH		"^1Between us friends who have always dreamed of ^1playing the multiplayer maps in zombie version ^1of that of ^1COD WAW ?"
+
+REFERENCE		DESC_BO1MAPS
+LANG_ENGLISH		"^1Between us friends who have always dreamed of ^1playing the multiplayer maps in zombie version ^1of that of ^1COD BLACK OPS 1 ?"
+
+REFERENCE		DESC_BO2MAPS
+LANG_ENGLISH		"^1Between us friends who have always dreamed of ^1playing the multiplayer maps in zombie version ^1of that of ^1COD BLACK OPS 2 ?"
+
+REFERENCE		DESC_ZMCLASSICMAPS                                             
+LANG_ENGLISH		"^1Hey you, do you like zombie classic maps ?"
+
+REFERENCE		DESC_CUSTOM_MAPS
+LANG_ENGLISH		"^1Downloaded maps that are placed in the ^1/usermaps subfolder"
+
+///COD4MW///
+
+REFERENCE		mp_crash
+LANG_ENGLISH		"^3Crash"
+
+REFERENCE		MPUI_DESC_MAP_CRASH
+LANG_ENGLISH		"^1Helicopter crash site. The undead await you in ^1this city abandoned by the apocalypse!"
+
+REFERENCE		mp_crash_tropical
+LANG_ENGLISH		"^3Crash: Tropical"
+
+REFERENCE		MPUI_DESC_MAP_CRASH_TROPICAL
+LANG_ENGLISH		"^1Helicopter crash site, covered in vegetation. The ^1undead await you in this city abandoned by the ^1apocalypse!"
+
+REFERENCE		mp_overgrown
+LANG_ENGLISH		"^3Overgrown"
+
+REFERENCE		MPUI_DESC_MAP_OVERGROWN
+LANG_ENGLISH		"^1Large Russian rural area overrun with zombies ^1and vegetation."
+
+REFERENCE		mp_bloc_sh
+LANG_ENGLISH		"^3Forgotten City"
+
+REFERENCE		MPUI_DESC_MAP_FORGOTTEN_CITY
+LANG_ENGLISH		"^1All Large Ukrainian apartments block. A real ^1haven for the hungry undead."
+
+REFERENCE		mp_shipment_snow
+LANG_ENGLISH		"^3Shipment Snow"
+
+REFERENCE		MPUI_DESC_MAP_SHIPMENT_SNOW
+LANG_ENGLISH		"^1The Shipment map and ^1back in a ^1snowy map ^1style accompanied by ^1its ^1Nazi zombies"
+
+///MW2///
+
+REFERENCE		mp_afghan
+LANG_ENGLISH		"^3Afghan"
+
+REFERENCE		MPUI_DESC_MAP_AFGHAN
+LANG_ENGLISH		"^1Medium sized open desert. By bad luck the ^1Undead managed to invade the desert!"
+
+REFERENCE		mp_derail
+LANG_ENGLISH		"^3Derail"
+
+REFERENCE		MPUI_DESC_MAP_DERAIL
+LANG_ENGLISH		"^1Train carcass in a vast snowy area, But be ^1careful, who could be hiding behind the train ^1carcasses!"
+
+REFERENCE		mp_estate
+LANG_ENGLISH		"^3Estate"
+
+REFERENCE		MPUI_DESC_MAP_ESTATE
+LANG_ENGLISH		"^1Cabin in the forest, with zombies roaming ^1around!"
+
+REFERENCE		mp_estate_tropical
+LANG_ENGLISH		"^3Estate: Tropical"
+
+REFERENCE		MPUI_DESC_MAP_ESTATE_TROPICAL
+LANG_ENGLISH		"^1Cabin in the forest, covered in vegetation, with ^1zombies roaming around!"
+
+REFERENCE		mp_favela
+LANG_ENGLISH		"^3Favela"
+
+REFERENCE		MPUI_DESC_MAP_FAVELA
+LANG_ENGLISH		"^1A Brazilian city invaded by an undead ^1apocalypse!"
+
+REFERENCE		mp_fav_tropical
+LANG_ENGLISH		"^3Favela: Tropical"
+
+REFERENCE		MPUI_DESC_MAP_FAV_TROPICAL
+LANG_ENGLISH		"^1 An abandoned Brazilian city covered in ^1vegetation invaded by an apocalypse of the ^1undead!"
+
+REFERENCE		mp_highrise
+LANG_ENGLISH		"^3Highrise"
+
+REFERENCE		MPUI_DESC_MAP_HIGHRISE
+LANG_ENGLISH		"^1Roof of a huge building filled with zombies"
+
+REFERENCE		mp_invasion
+LANG_ENGLISH		"^3Invasion"
+
+REFERENCE		MPUI_DESC_MAP_INVASION
+LANG_ENGLISH		"^1City in the desert. ^1With the return of the living ^1dead to wallow ^1in your worst nightmare"
+
+REFERENCE		mp_checkpoint
+LANG_ENGLISH		"^3Karachi"
+
+REFERENCE		MPUI_DESC_MAP_KARACHI
+LANG_ENGLISH		"^1Deserted and devastated city. ^1Many zombie ^1attacks are possible ^1in the streets."
+
+REFERENCE		mp_rundown
+LANG_ENGLISH		"^3Rundown"
+
+REFERENCE		MPUI_DESC_MAP_RUNDOWN
+LANG_ENGLISH		"^1An apocalypse has struck a Brazilian village"
+
+REFERENCE		mp_rust
+LANG_ENGLISH		"^3Rust"
+
+REFERENCE		MPUI_DESC_MAP_RUST
+LANG_ENGLISH		"^1Small sandstorm in the desert with undead ^1chasing you until you die"
+
+REFERENCE		mp_boneyard
+LANG_ENGLISH		"^3Scrapyard"
+
+REFERENCE		MPUI_DESC_MAP_SCRAPYARD
+LANG_ENGLISH		"^1Small airplane graveyard. Perfect place to get ^1eaten by hungry zombies."
+
+REFERENCE		mp_nightshift
+LANG_ENGLISH		"^3Skidrow"
+
+REFERENCE		MPUI_DESC_MAP_SKIDROW
+LANG_ENGLISH		"^1Urban center. A favorite place for undead groups."
+
+REFERENCE		mp_subbase
+LANG_ENGLISH		"^3Sub Base"
+
+REFERENCE		MPUI_DESC_MAP_SUBBASE
+LANG_ENGLISH		"^1Snowy underwater base. A perfect place for ^1zombies to drown you in the sea."
+
+REFERENCE		mp_terminal
+LANG_ENGLISH		"^3Terminal"
+
+REFERENCE		MPUI_DESC_MAP_TERMINAL
+LANG_ENGLISH		"^1Airport flooded with flesh-hungry zombies!"
+
+REFERENCE		mp_brecourt
+LANG_ENGLISH		"^3Wasteland"
+
+REFERENCE		MPUI_DESC_MAP_WASTELAND
+LANG_ENGLISH		"^1Chernobyl exterior. Perfect place for this ^1radiation filled meal more hungry zombies."
+
+REFERENCE		mp_storm
+LANG_ENGLISH		"^3Storm"
+
+REFERENCE		MPUI_DESC_MAP_STORM
+LANG_ENGLISH		"^1Warehouses in the middle of an apocalypse ^1storm! The undead are here!!!"
+
+///MW3///
+
+REFERENCE		mp_dome
+LANG_ENGLISH		"^3Dome"
+
+REFERENCE		MPUI_DESC_MAP_DOME
+LANG_ENGLISH		"Play in dome."
+
+REFERENCE		mp_seatown_snow
+LANG_ENGLISH		"^3Sea Town Snow"
+
+REFERENCE		MPUI_DESC_MAP_SEATOWN_SNOW
+LANG_ENGLISH		"Sea town snow area."
+
+REFERENCE		mp_winter_rasalem
+LANG_ENGLISH		"^3Rasalem Winter: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_WINTER_RASALEM
+LANG_ENGLISH		""
+
+///WAW///
+
+REFERENCE		mp_asylum
+LANG_ENGLISH		"^3Asylum"
+
+REFERENCE		MPUI_DESC_MAP_ASYLUM
+LANG_ENGLISH		"^1The asylum is filled with blown up walls, rotting ^1furniture, operating tables and bloody ^1handprints on the walls. This is a good map to ^1destroy Nazi Undead!!!!"
+
+REFERENCE		mp_waw_castle
+LANG_ENGLISH		"^3Castle"
+
+REFERENCE		MPUI_DESC_MAP_CASTLE
+LANG_ENGLISH		"^1The Castle map is located in the property of a ^1Japanese temple, reinvested by the Imperial ^1Army. There are therefore gardens, large ^1courtyards, varied and well-placed buildings ^1allowing the Undead to reach their prey more ^1easily.."
+
+///BO1///
+
+REFERENCE		mp_firingrange
+LANG_ENGLISH		"^3Firing Range"
+
+REFERENCE		MPUI_DESC_MAP_FIRINGRANGE
+LANG_ENGLISH		"^1Close range to medium range combat in a ^1military practice facility in Cuba."
+
+REFERENCE		mp_nuked
+LANG_ENGLISH		"^3Nuketown"
+
+REFERENCE		MPUI_DESC_MAP_NUKED
+LANG_ENGLISH		"^1Mass-energy equivalence, secret test, crash ^1landing perks. Survive in the past and the future ^1come together."
+
+REFERENCE		mp_mountain
+LANG_ENGLISH		"^3Summit: ^4is Done"
+
+REFERENCE		MPUI_DESC_MAP_SUMMIT
+LANG_ENGLISH		"^1A research base on a snowy mountain invades a ^1bloodthirsty undead apocalypse."
+
+REFERENCE		mp_radiation_sh
+LANG_ENGLISH		"^3Radiation: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_RADIATION_SH
+LANG_ENGLISH		"^1Uranium processing plant invaded by ^1bloodthirsty undead"
+
+///BO2///
+
+REFERENCE		mp_raid
+LANG_ENGLISH		"^3Raid"
+
+REFERENCE		MPUI_DESC_MAP_BO2RAID
+LANG_ENGLISH		"^1Kill all the zombies in this mansion. The mansion ^1is located in the Hollywood Hills. Lively close ^1combat!"
+
+REFERENCE		mp_bo2plaza
+LANG_ENGLISH		"^3Plaza"
+
+REFERENCE		MPUI_DESC_MAP_BO2PLAZA
+LANG_ENGLISH		"^1Floating resort in the middle of the Indian Ocean. ^1This place was infected by element 115! The ^1Undead are here!!!"
+
+REFERENCE		mp_box_hjacked
+LANG_ENGLISH		"^3Hjacked: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2HJACKED
+LANG_ENGLISH		"^1A luxury yacht. With undead hungry for your ^1soul!"
+
+REFERENCE		mp_bo2hydro
+LANG_ENGLISH		"^3Hydro: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2HYDRO
+LANG_ENGLISH		"^1Hydroelectric power plant in the heart of ^1Pakistan. and yes the zombies are also there."
+
+REFERENCE		mp_bo2overflow
+LANG_ENGLISH		"^3Overflow: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2OVERFLOW
+LANG_ENGLISH		"^1Peshawar, Pakistan. Great fights for human flesh ^1in flooded streets."
+
+REFERENCE		mp_bo2standoff
+LANG_ENGLISH		"^3Standoff: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2STANDOFF
+LANG_ENGLISH		"^1A border town between China and Kyrgyzstan. ^1Waves of Undead attack the town in order to ^1devour you!"
+
+REFERENCE		mp_bo2cove
+LANG_ENGLISH		"^3Cove: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2COVE
+LANG_ENGLISH		"^1Fight on this isolated island, Zombies have ^1managed to arrive on the island with a huge ^1thirst for blood!"
+
+REFERENCE		mp_bo2carrier
+LANG_ENGLISH		"^3Carrier: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2CARRIER
+LANG_ENGLISH		"^1Large Chinese aircraft carrier. Open combat on ^1deck, with undead waiting for you for a meal !"
+
+REFERENCE		mp_bo2nuketown2
+LANG_ENGLISH		"^3Nuketown: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2NUKETOWN
+LANG_ENGLISH		"^1A classic map from the black ops series in a ^1futuristic version and let's not forget the zombies"
+
+REFERENCE		mp_bo2yemen
+LANG_ENGLISH		"^3Yemen: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2YEMEN
+LANG_ENGLISH		"^1Urban streets of Yemen. Narrow alleys with ^1hungry undead !"
+
+REFERENCE		mp_bo2turbine
+LANG_ENGLISH		"^3Turbine: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2TURBINE
+LANG_ENGLISH		"^1Fight the various zombies in this wind farm in ^1the steep hills of Yemen."
+
+REFERENCE		mp_bo2mir
+LANG_ENGLISH		"^3Mirage: ^1in dev"
+
+REFERENCE		MPUI_DESC_MAP_BO2MIRAGE
+LANG_ENGLISH		"^1A sandy and covered ski resort in the Gobi ^1Desert. The sand offers very beautiful zombies ^1all sandy."
+
+///ZW_CLASSIC///
+
+REFERENCE		mp_bo2_town
+LANG_ENGLISH		"^3Green Run"
+
+REFERENCE		MPUI_DESC_MAP_GREEN_RUN
+LANG_ENGLISH		"^1Survive in Town with various perks, wall ^1weapons, and the ^1Pack-a-Punch."
+
+REFERENCE		mp_bsf_dead_night
+LANG_ENGLISH		"^3Nacht der Untoten"
+
+REFERENCE		MPUI_DESC_MAP_NACHT_DER_UNTOTEN
+LANG_ENGLISH		"^1You drove them deep into ^1the heart ^1of the Reich. ^1You thought they were ^1dead. You were wrong."
+
+REFERENCE		zm_factory_sh
+LANG_ENGLISH		"^3Der Riese"
+
+REFERENCE		MPUI_DESC_MAP_FACTORY_SH
+LANG_ENGLISH		"^1The Giant is risin. Face the might ^1of the Nazi ^1Zombies in their heartland. This is where the ^1master plan took shape. Is this where it all ends?"
+
+ENDMARKER
