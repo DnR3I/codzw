@@ -1,0 +1,15 @@
+material,menu_rules_selection_bar
+material,rank_pvt2
+material,rank_pfc2
+material,rank_spc2
+material,rank_cpl2
+material,rank_sgt2
+material,rank_ssgt2
+material,rank_sfc2
+material,rank_msgt2
+material,rank_1stsgt2
+material,rank_csm1
+xmodel,mw2r_viewmodel_ak47_tactical_animated_gold
+xmodel,mw2r_worldmodel_ak47_tactical_animated_gold
+rawfile,vision/default_mp.vision
+techset,mc_l_hsm_r0c0s0_custom_objective

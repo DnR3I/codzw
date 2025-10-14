@@ -1,0 +1,30 @@
+
+/////////////////////////////////////////////////////
+//  Zombies Script For Lobby (dont fuck with this) //
+//             Please Only Edit Maps               //
+/////////////////////////////////////////////////////
+
+gametype zombies                                // Gametype name for playlist. 
+name english "Nazi Zombies"                     // Gametype name for english versions of IW4x.
+script zombies                                  // Gametype script thats based off gsc.
+rule scr_thirdperson 0                          // Third-Person Mode.
+
+/////////////////////////////////////////////////////////////////
+//             PLAYLIST # (Please Dont fuck wit it)            //
+/////////////////////////////////////////////////////////////////
+
+playlist 0
+name english "Nazi Zombies"
+
+rule party_minplayers 1
+rule party_maxplayers 6
+
+////////////////////////////////////////////
+//   Add maps here in this formate:       //
+//        file_name,zombies,1             //
+//  all map names are in the server cfg   //
+////////////////////////////////////////////
+
+
+mp_afghan,zombies,1
+mp_terminal,zombies,1
