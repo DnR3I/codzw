@@ -1,0 +1,143 @@
+#include "ui/menudef.h"
+#include "ui_mp/main.inc"
+
+#define MENU_NAME					"main_text"
+#define MENU_MUSIC					"music_opening"
+
+#undef CHOICE_GROUP
+#define CHOICE_GROUP				MENU_NAME
+
+#define CREATE_GAME_ACTION \
+	exec							"xrequirelivesignin"; \
+	setDvar							"systemlink" 0; \
+	setDvar							"splitscreen" 0; \
+	setDvar							"onlinegame" 1; \
+	setDvar							"party_maxplayers" 4; \
+	setDvar							"xblive_privateserver" 0; \
+	setDvar							"xblive_rankedmatch" 1; \
+	exec							"xstartprivateparty"; \
+	setDvar							"ui_mptype" 0; \
+	exec							"xcheckezpatch"; \
+	setDvar							"xblive_rankedmatch" 1; \
+	exec							"ui_enumeratesaved"; \
+	setDvar							"xblive_privateserver" 1; \
+	exec							"xstartprivatematch"; \
+	execnow 						"set safeArea_adjusted_vertical 0.85"; \
+	execnow 						"set safeArea_adjusted_horizontal 0.85"; \
+	exec 							ui_mapname mp_bsf_dead_night; \
+	open							"menu_xboxlive_privatelobby";
+
+#define CHOICE_Y(i)					(35 + (i * 20))
+#define CHOICE_ORIGIN(i)			-64 CHOICE_Y(i)
+#define CHOICE_RECT(i)				CHOICE_ORIGIN(i) 250 20 1 1
+
+#define HR_ORIGIN(i)				0 (CHOICE_Y(i) - 0.5)
+#define HR_RECT(i)					HR_ORIGIN(i) 216 1 1 1
+
+{
+	menuDef
+	{
+		name						MENU_NAME
+		fullscreen					1
+		rect						0 0 640 480
+		foreColor					CHOICE_TEXTCOLOR
+		focusColor					CHOICE_TEXTCOLOR
+		soundLoop					MENU_MUSIC
+		fadeCycle					1
+		fadeClamp					1
+		fadeAmount					0.1
+		
+		MENU_ON_OPEN(ON_MENU_OPEN)
+		MENU_ON_OPEN(focusFirst;)
+		MENU_ON_OPEN(setLocalVarString ui_info_icon;)
+		MENU_ON_OPEN(setLocalVarString ui_info_name;)
+
+		MENU_ON_ESC(open "quit_popmenu";)
+		
+        	focusColor 1 1 1 1
+        	#define DO_THE_CHICKEN_WING
+        	#include "ui_mp/background_main_text.inc"
+		itemDef
+		{
+			rect 320 20 350 240 1 1
+			style 3
+			foreColor 1 1 1 1
+			background "logo_cod2"
+			visible 1
+		}
+		itemDef
+		{
+			name "start_menu_principal"
+			rect 270 220 336 25 1 1
+			group "mw2_popup_button"
+			style 1
+			visible 1
+			decoration
+			forecolor 1 1 1 1
+			disablecolor 0.6 0.55 0.55 1
+			type 1
+			textfont 3
+			textalign 6
+			textalignx -60
+			textscale 0.355
+			text "@MENU_PRESS_TO_PLAY"
+		}
+		itemDef
+		{
+			name "start_menu_principal"
+			rect 220 420 336 25 1 1
+			group "mw2_popup_button"
+			style 1
+			visible 1
+			decoration
+			forecolor 1 1 1 1
+			disablecolor 0.6 0.55 0.55 1
+			type 1
+			textfont 3
+			textalign 6
+			textalignx -60
+			textscale 0.175
+			text "@MENU_FROM_THIS_PROJECT"
+		}
+		itemDef
+		{
+			name "start_menu_principal"
+			rect -425.667 -240 893.333 520 2 2
+			group "mw2_popup_button"
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			disablecolor 0.6 0.55 0.55 1
+			type 1
+			textfont 3
+			textalign 6
+			textalignx -60
+			textscale 0.475
+			action
+			{
+			  play "mouse_click";
+			  exec "set party_maxPrivatePartyPlayers 4";
+			  exec "set sv_maxclients 4";
+			  open "menu_xboxlive";
+			  close self;
+			}
+			onFocus
+			{
+				if ( dvarstring( "gameMode" ) != "mp" )
+				{
+					setItemColor "mw2_popup_button" backcolor 0 0 0 0;
+				}
+				setItemColor self backcolor 0 0 0 0;
+				//setLocalVarBool "ui_popupAButton" ( 1 );
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0;
+				//setLocalVarBool "ui_popupAButton" ( 0 );
+			}
+		}
+		#include "ui_mp/version_year/global_version_and_year.inc"
+		#include "ui_mp/patch_mp_zm/patch_zm.inc"
+	} 
+
+}

@@ -1,0 +1,243 @@
+#define CHOICE_Y(i)					(35 + (i * 20))
+#define CHOICE_ORIGIN(i)			-64 CHOICE_Y(i)
+#define CHOICE_RECT(i)				CHOICE_ORIGIN(i) 250 20 1 1
+
+#define HR_ORIGIN(i)				0 (CHOICE_Y(i) - 0.5)
+#define HR_RECT(i)					HR_ORIGIN(i) 216 1 1 1
+{
+	menuDef
+	{
+		name "changelog"
+		rect -430 -102 860 204 2 2
+		popup
+		legacySplitScreenScale
+		visible 1
+		style 1
+		focuscolor 1 1 1 1
+		fadeCycle 1
+		fadeClamp 1
+		fadeAmount 0.1
+		execKey "l"
+		{
+			play "mouse_click";
+			close self;
+		}
+		onOpen
+		{
+			exec "selectStringTableEntryInDvar mp/didyouknow.csv 0 didyouknow";
+			uiScript "UpdateFilter";
+			setfocus "serverlist";
+		}
+		onEsc
+		{
+			play "mouse_click";
+			close self;
+		}
+        	focusColor 1 1 1 1
+        	#define DO_THE_CHICKEN_WING
+		itemDef
+		{
+			rect 0 0 860 204 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.7
+			background "white"
+			textscale 0.55
+		}
+		itemDef
+		{
+			rect -370 -204 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			backColor 255 0 0 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 400
+			textAlignY 14
+			textscale 0.25
+			text "@MENU_CHANGELOG"
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -184 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 360
+			textAlignY 14
+			textscale 0.2
+			text "Note patch version ^1PRE ALPHA V9:"
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -164 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^5- New, ^3New weapons ^7and ^3reorganization of weapons ^7and ^3Dead Ops Arcade ^4Gametype^7."
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -154 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^5- New, ^3Der Riese ^4map. ^7Texture Reworked of ^3Nacht Der Untoten ^4map"
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -144 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^5- Bug fixes, ^3Pack-A-Punch Machine : (You can upgrade your gun!)^7."
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -134 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^5- Bug fixes, ^7Remove HUD for when Game Over menu appears"
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -124 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^5- Reorganization ^7of all maps"
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -114 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text "^1- Deleted, ^3Panzersoldat, Insanity Elemental^7."
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -104 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text ""
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -94 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text ""
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -84 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text ""
+			visible 1
+		}
+		itemDef
+		{
+			rect -370 -74 902 15 3 3
+			decoration
+			border 0
+			forecolor 1 1 1 1
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textAlignX 270
+			textAlignY 14
+			textscale 0.18
+			text ""
+			visible 1
+		}
+	}
+}
