@@ -1,0 +1,36 @@
+
+
+{
+	menuDef
+	{
+		name "weaponbar_hd"
+		rect 0 -20 640 480 4 4
+		visible 1
+		forecolor 1 1 1 1
+        	itemDef
+        	{
+            		rect                        -180 -150 200 200 10 10
+            		style                       3
+            		decoration                  
+            		visible                     1
+            		textscale                   0.55
+            		forecolor                   1 1 1 1
+            		background                  "hud_weaponbar"
+		}
+		itemDef
+		{
+			name "lowammowarning"
+			rect -50 -20 100 100 2 2
+			decoration
+			visible 1
+			ownerdraw 120
+			forecolor 1 1 1 0.65
+			type 8
+			textfont 9
+			textalign 9
+			textscale 0.3333
+			visible when ( ( ! ( inkillcam( ) ) ) && ( ! ( spectatingclient( ) ) ) )
+
+		}
+	}
+}

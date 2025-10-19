@@ -1,0 +1,142 @@
+#include "ui/menudef.h"
+#include "ui_mp/main.inc"
+
+#define MENU_NAME									"popup_friends"
+#define	MENU_TITLE									"@MENU_FRIENDS"
+
+#define POPMENU_POS_X								-250
+#define POPMENU_POS_Y								-184
+
+#define POPMENU_WIDTH								520
+#define POPMENU_HEIGHT								370
+
+#define POPMENU_RECT								POPMENU_POS_X POPMENU_POS_Y POPMENU_WIDTH POPMENU_HEIGHT HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+
+#define ON_MENU_OPEN \
+	uiScript										"LoadFriends"; \
+	setLocalVarInt									"ui_centerPopup" (1);
+
+#define ON_MENU_CLOSE \
+	setLocalVarInt									"ui_centerPopup" (0);
+
+#define ON_MENU_ESC \
+	close											self;
+
+#define ON_EXEC_KEY_F \
+	escape											self;
+
+menuDef
+{
+	name											MENU_NAME
+	rect											POPMENU_RECT
+	popup
+	legacySplitScreenScale
+	style											WINDOW_STYLE_FILLED
+	MENU_ON_ESC(ON_MENU_ESC)
+	MENU_EXEC_KEY("f", ON_MENU_ESC)
+
+	POPUP_BACKGROUND_BASE
+	POPUP_TITLE(MENU_TITLE)
+
+	itemDef
+	{
+		name "windows"
+		rect -30 -1 580 372 0 0
+		style 1
+		border 0
+		ownerdraw 0
+		ownerdrawFlag 0
+		borderSize 1
+		foreColor 1 1 1 1
+		backColor 1 1 1 1
+		background "black"
+		outlineColor 0 0 0 0.5
+		decoration 
+		autoWrapped 
+		type 0
+		align 0
+		textAlign 0
+		textScale 0.5
+		textStyle 3
+		textFont 9
+		feeder 0
+		visible 1
+	}
+	itemDef
+	{
+		name "windows"
+		rect -30 -1 580 372 0 0
+		style 1
+		border 0
+		ownerdraw 0
+		ownerdrawFlag 0
+		borderSize 1
+		foreColor 1 1 1 1
+		backColor 1 1 1 1
+		background "cardicon_cod4"
+		outlineColor 0 0 0 0.5
+		decoration 
+		autoWrapped 
+		type 0
+		align 0
+		textAlign 0
+		textScale 0.5
+		textStyle 3
+		textFont 9
+		feeder 0
+		visible 1
+	}
+	itemDef
+	{
+		name										"friendsList"
+		rect										0 22 POPMENU_WIDTH 300
+		type										ITEM_TYPE_LISTBOX
+		style										WINDOW_STYLE_FILLED
+		elementWidth								120
+		elementHeight								16
+		textFont									UI_FONT_NORMAL
+		foreColor									CHOICE_TEXTCOLOR
+		backColor									0 0 0 0
+		outlineColor								0 0 0 0.6
+		textScale									.25
+		feeder										61
+		visible										1
+//		numcols			xpos		xwidth		textlen		alignment
+		columns 3		8			16			4			0
+						42			178			51			0
+						226			263			52			0
+		doubleClick
+		{
+			uiScript								"JoinFriend";
+		}
+	}
+	itemDef
+	{
+		rect 395 115 105 25 2 3
+		visible 1
+		style 1
+		forecolor 1 1 1 1
+		backColor 0.98 0.5 0.02 0.8
+		type 1
+		textfont 9
+		textalign 9
+		textscale 0.375
+		text "@BUTTON_BACK"
+		action
+		{
+			play "mouse_click";
+			"escape" self;
+		}
+		onFocus
+		{
+			play "mouse_over";
+			setItemColor self backcolor 0.98 0.5 0.02 1;
+			setLocalVarBool "ui_menuAButton" ( 1 );
+		}
+		leaveFocus
+		{
+			setItemColor self backcolor 0.98 0.5 0.02 0.8;
+			setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
+			setLocalVarBool "ui_menuAButton" ( 0 );
+		}
+}

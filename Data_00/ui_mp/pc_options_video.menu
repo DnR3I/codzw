@@ -1,0 +1,894 @@
+
+{
+	menuDef
+	{
+		name "pc_options_video"
+		rect -250 -140 500 270 2 2
+		popup
+		legacySplitScreenScale
+		visible 1
+		style 1
+		forecolor 1 1 1 1
+		focuscolor 1 1 1 1		
+		onOpen
+		{
+			execnow "profile_menuDvarsSetup; resetViewport";
+			setLocalVarBool "ui_hideBack" ( 1 );
+			if ( !localvarint( "ui_showApply" ) )
+			{
+				exec "exec options_graphics.cfg";
+			}
+			execOnDvarFloatValue "r_zfeather" 0 "set ui_zfeather 0";
+			execOnDvarFloatValue "r_zfeather" 1 "set ui_zfeather 1";
+			execOnDvarFloatValue "r_depthPrepassModels" 1 "set ui_zfeather 2";
+			execnow "profile_menuDvarsSetup; resetViewport";
+			close "controls_multi"; 
+			close "main_controls"; 
+			close "main_options"; 
+			close "options_control_defaults"; 
+			close "options_graphics"; 
+			close "options_graphics_defaults"; 
+			close "options_graphics_texture"; 
+			close "options_multi"; 
+			close "options_voice"; 
+			close "pc_options_actions"; 
+			close "pc_options_advanced_video"; 
+			close "pc_options_audio"; 
+			close "pc_options_controls"; 
+			close "pc_options_game"; 
+			close "pc_options_look"; 
+			close "pc_options_movement"; 
+			close "pc_options_multi"; 
+			close "pc_options_voice";
+			close "pc_options_gamepad";
+		}
+		onRequestClose
+		{
+			execnow "profile_menuDvarsFinish; resetViewport";
+			setLocalVarBool "ui_hideBack" ( 0 );
+			execOnDvarIntValue "ui_zfeather" 0 "set r_zfeather 0;set r_depthPrepassModels 0";
+			execOnDvarIntValue "ui_zfeather" 1 "set r_zfeather 1;set r_depthPrepassModels 0";
+			execOnDvarIntValue "r_lodScaleRigid" 2 "set r_lodScaleSkinned 4; set r_lodBiasSkinned -200; set r_lodBiasRigid -100";
+			execOnDvarIntValue "r_lodScaleRigid" 1 "set r_lodScaleSkinned 1; set r_lodBiasSkinned 0; set r_lodBiasRigid 0";
+		}
+		onEsc
+		{
+			close self;
+			if ( localvarbool( "ui_showApply" ) || localvarbool( "ui_showAudioApply" ) )
+			{
+				if ( !menuisopen( "pc_options_advanced_video" ) && !menuisopen( "pc_options_video" ) && !menuisopen( "pc_options_Audio" ) && !menuisopen( "pc_options_controls" ) && !menuisopen( "pc_options_voice" ) )
+				{
+					open "all_restart_popmenu";
+				}
+			}
+			execnow "profile_menuDvarsFinish; resetViewport";
+		}
+		#include "ui_mp/options.inc"
+
+		itemDef
+		{
+			rect 0 -16 80 15 2 2
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 255 0 0 1	
+			style 1
+			type 1
+			textfont 9
+			textstyle 7
+			textalign 4
+			textalignx 5
+			textscale 0.3
+			text "@MENU_VIDEO"
+		}
+		itemDef
+		{
+			rect 20 40 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_VIDEO_MODE"	
+		}	
+		itemDef
+		{
+			rect 118 41 100 16 2 2
+			visible 1
+			style 1
+			forecolor 0.85 0.75 0 1
+			backcolor 1 1 1 0.3
+			type 13
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar ui_r_mode
+			dvarEnumList r_mode
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+		}
+		itemDef
+		{
+			rect 20 60 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_FULLSCREEN"
+		}
+		itemDef
+		{
+			rect 118 61 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar ui_r_fullscreen
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 20 80 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_NOBORDER"
+		}
+		itemDef
+		{
+			rect 118 81 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar r_noborder
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 20 100 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_BRIGHTNESS"
+		}
+		itemDef
+		{
+			rect 118 101 100 16 2 2
+			visible 1
+			type 10
+			forecolor 0.85 0.75 0 1
+			dvarFloat "r_gamma" 0.5 0.8 3
+			action
+			{
+				execnow "profile_menuDvarsFinish" ;
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setLocalVarBool "ui_brightness_hint_display" ( 1 );
+			}
+			leaveFocus
+			{
+				setLocalVarBool "ui_brightness_hint_display" ( 0 );
+			}
+		}
+		itemDef
+		{
+			rect 20 120 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_FOV"
+		}
+		itemDef
+		{
+			rect 118 121 100 16 2 2
+			style 1
+			type 12
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			textfont 3
+			textalign 9
+			textalignx 10
+			textscale 0.3
+			dvar cg_fov
+			dvarStrList {"^365 (Default)" 65 "^380" 80 "^390" 90 "^3100" 100 "^3110" 110 "^3120" 120}
+			action
+			{
+				execnow "profile_menuDvarsFinish" ;
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 20 160 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_SYNC_EVERY_FRAME"
+		}
+		itemDef
+		{
+			rect 20 161 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_vsync"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			//disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 123 160 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_SHADOWS"
+		}
+		itemDef
+		{
+			rect 123 161 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "sm_enable"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 123 180 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_DOF"
+		}
+		itemDef
+		{
+			rect 123 181 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "r_dof_enable"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			action
+			{
+				play "mouse_click";
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 123 200 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_BULLET_IMPACTS"
+		}
+		itemDef
+		{
+			rect 123 201 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "fx_marks"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			action
+			{
+				play "mouse_click";
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 20 180 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_SPECULAR_MAP"
+		}
+		itemDef
+		{
+			rect 20 181 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "r_specular"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			action
+			{
+				play "mouse_click";
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}		
+		itemDef
+		{
+			rect 20 200 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_ZFEATHER_SMOKE"
+		}
+		itemDef
+		{
+			rect 20 201 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "ui_zfeather"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			action
+			{
+				play "mouse_click";
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 20 220 100 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textaligny 2
+			textscale 0.3
+			text "@MSS_RAGDOLL"
+		}
+		itemDef
+		{
+			rect 20 221 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalignx 40
+			textalign 9
+			textscale 0.3
+			dvar "ragdoll_enable"
+			dvarFloatList { "@BUTTON_NO" 0 "@BUTTON_YES" 1 }
+			action
+			{
+				play "mouse_click";
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 260 40 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_MAXFPS"
+		}
+		itemDef
+		{
+			rect 358 41 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar com_maxfps
+			dvarStrList { "^330" 30 "^385 (Default)" 85 "^3125" 125 "^3250" 250 "^3333" 333 "@BUTTON_UNLIMITED" 0}
+			action
+			{
+				;
+			}
+			onFocus
+			{
+				play "mouse_over";
+			}
+		}
+		itemDef
+		{
+			rect 260 60 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_SCREEN_REFRESH_RATE"
+		}
+		itemDef
+		{
+			rect 358 61 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar ui_r_displayRefresh
+			dvarFloatList { "^330 Hz" 30 "^340 Hz" 40 "^350 Hz" 50 "^360 Hz" 60 "^375 Hz" 75 "^3100 Hz" 100 "^3120 Hz" 120 "^3144 Hz" 144 "^3165 Hz" 165 "^3240 Hz" 240 }			
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}	
+		itemDef
+		{
+			rect 260 80 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_ANTIALIASING"
+		}
+		itemDef
+		{
+			rect 358 81 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_aasamples"
+			dvarFloatList { "@BUTTON_OFF" 1 "@BUTTON_2X" 2 "@BUTTON_4X" 4 "@BUTTON_8X" 8 }
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5; 
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 260 120 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_TEXTURE_QUALITY"
+		}
+		itemDef
+		{
+			rect 358 121 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_picmip_manual"
+			dvarFloatList { "@BUTTON_AUTOMATIC" 0 "@BUTTON_MANUAL" 1 }
+			disabled when ( ( ( dvarstring( "gameMode" ) == "so" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) || ( dvarstring( "gameMode" ) == "mp" && ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) || inlobby( ) ) ) ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}	
+		itemDef
+		{
+			rect 260 140 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_TEXTURE_RESOLUTION"
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+		}
+		itemDef
+		{
+			rect 358 141 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_picmip"
+			dvarFloatList { "@BUTTON_LOW" 3 "@BUTTON_NORMAL" 2 "@BUTTON_HIGH" 1 "@BUTTON_EXTRA" 0 }
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 260 160 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_NORMAL_MAP_RESOLUTION"
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+		}
+		itemDef
+		{
+			rect 358 161 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_picmip_bump"
+			dvarFloatList { "@BUTTON_LOW" 3 "@BUTTON_NORMAL" 2 "@BUTTON_HIGH" 1 "@BUTTON_EXTRA" 0 }
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			rect 260 180 200 18 2 2
+			decoration
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.5
+			textfont 3
+			textalign 4
+			textalignx 10
+			textscale 0.3
+			text "@MSS_SPECULAR_MAP_RESOLUTION"
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+		}
+		itemDef
+		{
+			rect 358 181 100 16 2 2
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 1 1 1 0.3
+			type 12
+			textfont 3
+			textalign 9
+			textscale 0.3
+			dvar "ui_r_picmip_spec"
+			dvarFloatList { "@BUTTON_LOW" 3 "@BUTTON_NORMAL" 2 "@BUTTON_HIGH" 1 "@BUTTON_EXTRA" 0 }
+			visible when ( dvarint( "ui_r_picmip_manual" ) )
+			action
+			{
+				play "mouse_click";
+				setLocalVarBool "ui_showApply" ( 1 );
+			}
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 1 1 1 0.5;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 1 1 1 0.3;
+			}
+		}
+		itemDef
+		{
+			name "brightness_hint"
+			rect 20 250 200 18 2 2
+			decoration
+			autowrapped
+			visible 1
+			style 1
+			forecolor 1 0.8 0.4 1
+			type 1
+			textscale 0.375
+			text "@MSS_BRIGHTNESS_HINT_PC"
+			visible when ( localvarbool( "ui_brightness_hint_display" ) )
+		}
+	}
+}
