@@ -191,8 +191,6 @@ doSpawnZombie(type,pos,key,health,infinite)
 	}
 	level.zombie[i] thread Zombie_Health();	
 	level.zombie[i] thread Zombie_SticksOnPlayer();
-	thread initZombieAttackSounds();
-	thread initZombieDeathSounds();
 	return level.zombie[i];
 }
 delayHealth()
@@ -271,15 +269,6 @@ Zombie_Climb(pos)
 	self.climbing = 0;
 	self thread Zombie_Move();
 }
-Zombie_DelaySolid()
-{
-    self notSolid();   // pas de collision au moment du spawn
-    wait 2;            // attends 2 secondes (tu peux ajuster à 1.5 ou 3 si besoin)
-    if (isDefined(self) && isAlive(self))
-    {
-        self Solid();  // active la collision
-    }
-}
 
 Zombie_Mode()
 {
@@ -351,6 +340,9 @@ Zombie_Mode_old()
 }
 Zombie_Animation(mode,tesla)
 {
+	self endon("zombie_dead");
+    self endon("zombie_reaim");
+
     if(!isdefined(mode))
 	    mode = "uneccessary";
 	if(mode == "death")
@@ -533,6 +525,10 @@ FatherDeath(time,respawn)
 
 Zombie_Death(time,respawn,newtype,tesla)
 {
+	// s'assure que les sons de mort sont init
+    if (!isDefined(level.zombie_death_sounds))
+        initZombieDeathSounds();
+
 	if(!isDefined(self))
 	{
 		level waittill("forever");
@@ -672,81 +668,95 @@ checkheight(pos1,pos2)
 }
 Zombie_Health()
 {
-	level endon("game_over");
-	self endon("zombie_dead");
+    level endon("game_over");
+    self endon("zombie_dead");
     while(1)
-	{
-	    self.hitbox waittill("damage", iDamage, attacker, iDFlags, vPoint, killtype, victim, vDir, sHitLoc, psOffsetTime, sWeapon);
-		damage = self doDamage(iDamage,attacker,victim,sWeapon,vPoint,killtype);	
-		// Effet de sang à l'impact
-		if (isDefined(vPoint))
-		{
-    		playFx(level.bloodfx, vPoint); // fx principal
-    		playFx(level.bloodfx, vPoint + (0,0,15)); // petit splash en hauteur
-		}
-		if(self.type == "normal")
-		{
-			health = (level.zombie_health/3);
-			if(self.ragemode == 0)
-			{				
-				if(self.hitbox.health < (health*2))
-				{
-					if(cointoss())
-						self thread Zombie_Animation("run");
-					if(self.ragemode < 1)
-						self.ragemode = 1;
-				}
-			}
-			else if(self.ragemode == 1)
-			{				
-				if(self.hitbox.health < health)
-				{
-					if(cointoss())
-						self thread Zombie_Animation("sprint");
-					self.ragemode = 2;
-				}
-			}
-		}	
-		attacker.damage_dealed += damage;
-		if(getDvarInt("hitmarker") == 1)		
-            attacker thread maps\mp\gametypes\_damagefeedback::updateDamageFeedback(sHitLoc);
-		self.wounded++;
-		if(self.hitbox.health <= 0 || !isDefined(self.hitbox.health))
-		{
-			attacker.kills++;
-			attacker.pers["kills"] = attacker.kills;
-		    if(killtype == "MOD_MELEE")
-			{
-				attacker.score += (80 * level.multiplier);
-				attacker.meleekills++;
-			}			    
-			else
-			{
-				attacker.score += (50 * level.multiplier);	
-			}							
-			attacker.mykills++;
-			attacker notify("killed"); 			
-			self thread Zombie_Death(0);		
-		}
-		else
-		{
-		    if(self.wounded <= 5)
-			{
-				attacker.score += (10 * level.multiplier); 
-			}
-			else if(self.type == "father")
-			{
-				if(self.hitbox.health != getDvarInt("zombie_george_health"))
-				{
-					if(self.inRage == 0)
-					{
-						self notify("inRage");
-					}
-				}
-			}
-		}		
-	}
+    {
+        self.hitbox waittill("damage", iDamage, attacker, iDFlags, vPoint, killtype, victim, vDir, sHitLoc, psOffsetTime, sWeapon);
+        damage = self doDamage(iDamage,attacker,victim,sWeapon,vPoint,killtype); 
+
+        if (isDefined(vPoint))
+        {
+            playFx(level.bloodfx, vPoint);
+            playFx(level.bloodfx, vPoint + (0,0,15));
+        }
+
+        if(self.type == "normal")
+        {
+            health = (level.zombie_health/3);
+            if(self.ragemode == 0)
+            {                
+                if(self.hitbox.health < (health*2))
+                {
+                    if(cointoss())
+                        self thread Zombie_Animation("run");
+                    if(self.ragemode < 1)
+                        self.ragemode = 1;
+                }
+            }
+            else if(self.ragemode == 1)
+            {                
+                if(self.hitbox.health < health)
+                {
+                    if(cointoss())
+                        self thread Zombie_Animation("sprint");
+                    self.ragemode = 2;
+                }
+            }
+        }   
+
+        // --- tout ce qui touche 'attacker' est maintenant protégé ---
+        if (isDefined(attacker))
+        {
+            attacker.damage_dealed += damage;
+            if(getDvarInt("hitmarker") == 1)     
+                attacker thread maps\mp\gametypes\_damagefeedback::updateDamageFeedback(sHitLoc);
+        }
+
+        self.wounded++;
+
+        if(self.hitbox.health <= 0 || !isDefined(self.hitbox.health))
+        {
+            if (isDefined(attacker))
+            {
+                attacker.kills++;
+                attacker.pers["kills"] = attacker.kills;
+
+                if(killtype == "MOD_MELEE")
+                {
+                    attacker.score += (80 * level.multiplier);
+                    attacker.meleekills++;
+                }               
+                else
+                {
+                    attacker.score += (50 * level.multiplier);    
+                }                           
+                attacker.mykills++;
+                attacker notify("killed");
+            }
+
+            self thread Zombie_Death(0);     
+        }
+        else
+        {
+            if (isDefined(attacker) && self.wounded <= 5)
+            {
+                attacker.score += (10 * level.multiplier); 
+            }
+            else if(self.type == "father")
+            {
+                if(self.hitbox.health != getDvarInt("zombie_george_health"))
+                {
+                    if(self.inRage == 0)
+                    {
+                        self notify("inRage");
+                    }
+                }
+            }
+        }       
+    }
 }
+
 Zombie_SticksOnPlayer()
 {
 	self endon("zombie_dead");
@@ -826,13 +836,13 @@ Zombie_Move2()
     self endon("zombie_reaim");
     level endon("game_over");
 
-    // --- phase "spawn": collision OFF puis ON ---
-    if (isDefined(self))
-    {
-        self notSolid();              // pas de collision pendant l'émergence
-        if (isDefined(self) && isAlive(self))
-            self Solid();             // collision activée
-    }
+	if (isDefined(self))
+	{
+		self notSolid();             // pas de collision pendant l'émergence
+		if (isDefined(self) && isAlive(self))
+			self Solid();         // collision activée
+	}
+
 
 	hasEnemy = false;
     waittime = 0.005;
@@ -985,6 +995,10 @@ Zombie_Attack(target)
     self endon("disconnect");
     self endon("zombie_reaim");
     level endon("game_over");
+
+	// s'assure que les sons d'attaque sont init
+	if (!isDefined(level.zombie_attack_sounds))
+        initZombieAttackSounds();
 
     if (!isDefined(target) || !isAlive(target))
         return;
@@ -1392,7 +1406,8 @@ Drop_Rotate()
 		}			
 	}
 	self notify("drop_timeout");
-	self.glow delete();
+	if (isDefined(self.glow))
+    	self.glow delete();
 	self delete();
 }
 Drop_Bling(time)
@@ -1443,7 +1458,8 @@ Drop_Think_Special()
 }
 Drop_Give(player,type)
 { 
-	self.glow delete();
+	if (isDefined(self.glow))
+    	self.glow delete();
     self delete();
 	if(type == "instakill")
 	{
@@ -1999,26 +2015,30 @@ doDamage(iDamage,attacker,victim,sWeapon,vPoint,killtype)
 	else if(weapon == "ak47_gl_mp")
 		iDamage = 500;	
 	
-	if(weapon != "ac130_40mm_mp" && weapon != "ac130_105mm_mp" && weapon != "ac130_25mm_mp")
-	{
-		aimAt = attacker getCursorPos();
-		if(self.mode == "idle")
-				maxdist = 25;
-			else
-				maxdist = 15;
-				
-		if(isDefined(self.head) && Distance(aimAt, self.head.origin+(0,0,10)) <= 28 && checkheight(aimAt,self.head.origin+(0,0,10)) < maxdist)
-		{
-			divisor = iDamage / 2;
-			iDamage = iDamage + int(divisor);
-			headshot = true;
-		}			
-		else
-			headshot = undefined;
-		if(isDefined(attacker.weaponlist[sWeapon]) && attacker.weaponlist[sWeapon] > 0)
-			iDamage *= 2;
-	}
-	self.hitbox.health -= iDamage;
+    if(weapon != "ac130_40mm_mp" && weapon != "ac130_105mm_mp" && weapon != "ac130_25mm_mp")
+    {
+        if (isDefined(attacker))
+        {
+            aimAt = attacker getCursorPos();
+            if(self.mode == "idle")
+                maxdist = 25;
+            else
+                maxdist = 15;
+                
+            if(isDefined(self.head) && Distance(aimAt, self.head.origin+(0,0,10)) <= 28 && checkheight(aimAt,self.head.origin+(0,0,10)) < maxdist)
+            {
+                divisor = iDamage / 2;
+                iDamage = iDamage + int(divisor);
+                headshot = true;
+            }           
+            else
+                headshot = undefined;
+
+            if(isDefined(attacker.weaponlist) && isDefined(attacker.weaponlist[sWeapon]) && attacker.weaponlist[sWeapon] > 0)
+                iDamage *= 2;
+        }
+    }
+    self.hitbox.health -= iDamage;
 	//iprintln("^1" + iDamage);
 	if(iDamage > 0)
 		self notify("damaged");	
@@ -2111,47 +2131,55 @@ SpawnInFire()
 
 Mindfuck()
 {
-	self endon("zombie_dead");
-	level endon("game_over");
-	self thread MindFuck_Fx();	
-	//self thread Mindfuck_Vision(); // makes player see darkness when he looks at him 
-	//self thread Mindfuck_Telekinesis(); // not finished, raises up entities next to him like cars	
-	while(true)
-	{
-		wait 4 + randomInt(12);
-		distance = 99999;
-		target = undefined;
-		foreach(player in level.players)
-		{
-			newdist = Distance(player.origin,self.origin);
-			if(newdist < distance && player.team == "allies" && player.isDown == 0 && player.protected == 0 && player.hidden == 0)
-			{
-				distance = newdist;
-				target = player;
-			}
-		}
-		if(isDefined(target) && Distance(target.origin,self.origin > 299))
-		{
-			forward = AnglesToForward(target.angles);
-			start = target getTagOrigin("j_head");
-			trace = bullettrace(start , start + vector_Scal(forward,300), false,undefined);
-			trace2 = bullettrace(trace["position"] ,trace["position"]+(0,0,-1000), false,undefined); 
-			if(Distance(trace2["position"], trace["position"]) < 1000)
-			{
-				self.attract = 1;
-				self moveTo(self.origin,1);
-				self hide();
-				self.head hide();
-				self.origin = trace2["position"];
-				portal = spawnfx(level.blackhole, trace2["position"]);
-				triggerfx(portal);
-				portal thread deletePortal();
-				self thread enteredPortal();
-			}
-		}
-		
-	}
+    self endon("zombie_dead");
+    level endon("game_over");
+    self thread MindFuck_Fx(); 
+    //self thread Mindfuck_Vision(); 
+    //self thread Mindfuck_Telekinesis();  
+
+    while(1)
+    {
+        wait 4 + randomInt(12);
+        distance = 99999;
+        target = undefined;
+
+        foreach(player in level.players)
+        {
+            newdist = Distance(player.origin,self.origin);
+            if(newdist < distance && player.team == "allies" && player.isDown == 0 && player.protected == 0 && player.hidden == 0)
+            {
+                distance = newdist;
+                target = player;
+            }
+        }
+
+        if (isDefined(target) && Distance(target.origin, self.origin) > 299)
+        {
+            forward = AnglesToForward(target.angles);
+            start   = target getTagOrigin("j_head");
+            trace   = bullettrace(start , start + vector_Scal(forward,300), false,undefined);
+            trace2  = bullettrace(trace["position"] ,trace["position"]+(0,0,-1000), false,undefined); 
+
+            if(Distance(trace2["position"], trace["position"]) < 1000)
+            {
+                self.attract = 1;
+                self moveTo(self.origin,1);
+                self hide();
+                if (isDefined(self.head))
+                    self.head hide();
+
+                self.origin = trace2["position"];
+
+                portal = spawnfx(level.blackhole, trace2["position"]);
+                triggerfx(portal);
+                portal thread deletePortal();
+
+                self thread enteredPortal();
+            }
+        }
+    }
 }
+
 deletePortal()
 {
 	wait 2;
@@ -2205,7 +2233,7 @@ Mindfuck_Telekinesis_old()
 	}
 	foreach(elem in ar)
 	{
-		ar PhysicsLaunchServer( (0,0,0), (randomInt(5),randomInt(5),randomInt(5)) );
+		elem PhysicsLaunchServer((0,0,0), (randomInt(5), randomInt(5), randomInt(5)));
 	}
 }
 Mindfuck_Move()

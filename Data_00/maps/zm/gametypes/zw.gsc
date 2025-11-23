@@ -598,6 +598,7 @@ doAlduin_Wasteland()
 }
 Dragon_Sound()
 {
+	level endon("game_over");  
 	self.dying = false;
 	self thread Dragon_DeathSound();
 	while(!self.dying)
@@ -920,6 +921,7 @@ Alduin_Ride(dragon)
 
 Dragon_Wind()
 {
+	level endon("game_over");  
     while(isDefined(self))
     {
         wait .5;
@@ -1020,6 +1022,7 @@ countEntities()
 }
 changeMapOnNoPlayers()
 {
+	level endon("game_over");  
 	level waittill("connected", player);
 	wait 40;
 	while(true)

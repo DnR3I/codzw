@@ -153,6 +153,8 @@ getCorrectUpgrade(weapon, name)
 		return "m1911_upg_zm";
 	else if(weapon == "m21_fmj_zm")
 		return "m14_upg_zm";
+	else if(weapon == "barrett_mp")
+		return "m82_upg_zm";
 	else if(weapon == "kar98k_tactical_mp")
 		return "kar98k_upg_zm";
 	else if(weapon == "ak47_mp")
@@ -759,6 +761,11 @@ getWeaponName(name)
         return "Intervention";	
 	else if(name == "cheytac_upg_zm")
         return "Cheytac Heaven";	
+
+	else if(name == "barrett_mp")
+        return "Barrett";	
+	else if(name == "m82_upg_zm")
+        return "Triple Penetration";	
 
 	else if(name == "riotshield_mp")
         return "Riot Shield";

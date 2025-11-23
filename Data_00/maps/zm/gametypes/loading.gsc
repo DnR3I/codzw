@@ -460,6 +460,7 @@ Weaponlist()
 	AddWeapon(level.dg2);
 	AddWeapon("m240_mp");
 	AddWeapon("mg4_mp");
+	AddWeapon("barrett_mp");
 	AddWeapon("m1014_mp");
 	AddWeapon("model1887_mp");
 	AddWeapon("mp5k_mp");
