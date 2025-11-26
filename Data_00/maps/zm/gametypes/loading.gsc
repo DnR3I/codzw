@@ -141,6 +141,7 @@ Init()
 	precacheShader("combathigh_overlay");
 	precacheShader("specialty_pistoldeath");
 	precacheShader("cardicon_abduction");
+	precacheShader("cardicon_helmet_pilot");
 	//precacheShader("minimap_background");
 	precacheShader("hud_weaponbar");
 	precacheShader("cardicon_launcher");

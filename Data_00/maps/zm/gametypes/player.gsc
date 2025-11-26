@@ -755,9 +755,8 @@ ZombieHud()
 	self endon("disconnect");
 	level endon("game_over");
 
-	zombiehud = self createFontString("objective", 1);
-	zombiehud setPoint("TOPLEFT", "TOPLEFT", 40, 70);
-	zombiehud setText("Zombies:");
+	zombiehud = self createIcon("cardicon_helmet_pilot", 28, 28);
+	zombiehud setPoint("TOPLEFT", "TOPLEFT", 35, 80);
 	zombiehud.color = (1,1,1);
 	zombiehud.glowalpha = 1;
 	zombiehud.glowcolor = (1,0,0);
@@ -765,7 +764,7 @@ ZombieHud()
 	zombiehud thread destroy_on_end_game();
 
 	zombiecounter = self createFontString("objective", 1);
-	zombiecounter setPoint("TOPLEFT", "TOPLEFT", 100, 70);
+	zombiecounter setPoint("TOPLEFT", "TOPLEFT", 65, 85);
 	zombiecounter.color = (255,0,0);
 	zombiecounter.glowalpha = 1;
 	zombiecounter.glowcolor = (255,0,0);
