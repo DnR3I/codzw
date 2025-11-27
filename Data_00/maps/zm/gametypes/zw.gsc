@@ -118,7 +118,7 @@ System()
 
         foreach(player in level.players)
         {
-            player thread doRoundHud();
+            player thread createRoundIcon();
             if(doggy == 0)
                 player safePlayLocalSound("mp_killstreak_choppergunner");
             else
@@ -344,40 +344,6 @@ Countdown()
 	intermission destroy();
 	level waittill("end");
 	level thread Countdown();
-}
-NotifyRoundEnd()
-{
-    level.total = level.zombies_total;
-	a = true;
-	while(level.zombies_left > 0)
-	{
-		wait .1;
-		if(a && level.zombies_left == 1 && level.round > 3)
-		{
-			a = false;
-			foreach(zombie in level.zombie)
-			{
-				if(isDefined(zombie.hitbox))
-				{
-					if(zombie.type == "normal")
-					{
-						foreach(player in level.players)
-						{
-							if(Distance(player.origin,zombie.origin) <= 300)
-							{
-							
-							}
-						}
-					}
-					else if(zombie.type == "dog" || zombie.type == "insanity")
-					{
-						zombie thread maps\zm\gametypes\zombies::Zombie_Drop("maxammo");
-					}
-				}
-			}
-		}
-	}
-	level notify("end");
 }
 clock()
 {
@@ -972,40 +938,143 @@ DropMechanic(zombieamount)
 
 }
 
-doRoundHud()
-{	
-	self endon("disconnect");
-	level endon("game_over");
+createRoundIcon()
+{
+    self endon("disconnect");
+    level endon("game_over");
 
-	if(isDefined(self.roundhudbackground))
-	self.roundhudbackground destroy();
+    // nettoie l'ancien HUD s'il existe
+    if (isDefined(self.roundhudbackground))
+        self.roundhudbackground destroy();
 
-	self.roundhudbackground = self createIcon("cardicon_headshot", 60, 60);
-	self.roundhudbackground setPoint("BOTTOMLEFT", "BOTTOMLEFT", 30, -410);
-	self.roundhudbackground.glowalpha = 1;
-	self.roundhudbackground.foreground = 0;
-	self.roundhudbackground thread destroy_on_end_game();
+    if (isDefined(self.roundhud_small))
+        self.roundhud_small destroy();
 
-		if(isDefined(self.roundhud_small))
-			self.roundhud_small destroy();
+    // 1) CREATION AU CENTRE DE L'ECRAN
+    self.roundhudbackground = self createIcon("cardicon_headshot", 60, 60);
+    self.roundhudbackground setPoint("CENTER", "CENTER", 0, -30);
+    self.roundhudbackground.glowalpha  = 1;
+    self.roundhudbackground.foreground = 0;
+    self.roundhudbackground.alpha      = 0;
+    self.roundhudbackground thread destroy_on_end_game();
 
-		self.roundhud_small = self createFontString("objective", 1.5);
-		self.roundhud_small setPoint("BOTTOMLEFT", "BOTTOMLEFT", 50, -433);	
-		self.roundhud_small setValue(level.round);
-		self.roundhud_small.color = (255,0,0);
-		self.roundhud_small.glowcolor = (255,0,0);
-		self.roundhud_small.glowalpha = 1;
-		self.roundhud_small.foreground = 1;
-		self.roundhud_small thread destroy_on_end_game();
-		wait 5;
+    self.roundhud_small = self createFontString("objective", 1.8);
+    self.roundhud_small setPoint("CENTER", "CENTER", 0, -30);
+    self.roundhud_small setValue(level.round);
+    self.roundhud_small.color      = (1, 0, 0);
+    self.roundhud_small.glowcolor  = (1, 0, 0);
+    self.roundhud_small.glowalpha  = 1;
+    self.roundhud_small.foreground = 1;
+    self.roundhud_small.alpha      = 0;
+    self.roundhud_small thread destroy_on_end_game();
+
+    // fade-in au centre
+    self.roundhudbackground fadeOverTime(0.3);
+    self.roundhudbackground.alpha = 1;
+    self.roundhud_small fadeOverTime(0.3);
+    self.roundhud_small.alpha = 1;
+
+    // temps ou le round reste au centre
+    wait 1;
+
+    // 2) ANIMATION VERS LE HUD EN BAS A GAUCHE
+
+    // mouvement vers bas gauche
+    self.roundhudbackground moveOverTime(0.7);
+    self.roundhudbackground.x = 60;
+    self.roundhudbackground.y = -400;
+
+    self.roundhud_small moveOverTime(0.7);
+    self.roundhud_small.x = 80;
+    self.roundhud_small.y = -423;
+
+    // si changeFontScaleOverTime n'existe pas dans ton moteur,
+    // commente simplement ces deux lignes pour eviter "unknown function"
+    // self.roundhud_small changeFontScaleOverTime(0.7);
+    // self.roundhud_small.fontScale = 1.5;
+
+    wait 0.7;
+
+    // on fixe les points d'ancrage finaux
+    self.roundhudbackground setPoint("BOTTOMLEFT", "BOTTOMLEFT", 30, -410);
+    self.roundhud_small      setPoint("BOTTOMLEFT", "BOTTOMLEFT", 50, -433);
 }
 
 doEndRoundHud()
-{	
-	self endon("disconnect");
+{
+    self endon("disconnect");
 
-	if(isDefined(self.roundhud_small))
-		self.roundhud_small destroy();
+    if (isDefined(self.roundhud_small))
+    {
+        // petit agrandissement puis fade-out
+        // idem ici: si changeFontScaleOverTime n'existe pas, commente ces 2 lignes
+        // self.roundhud_small changeFontScaleOverTime(0.25);
+        // self.roundhud_small.fontScale = 2.0;
+
+        self.roundhud_small fadeOverTime(0.4);
+        self.roundhud_small.alpha = 0;
+    }
+
+    if (isDefined(self.roundhudbackground))
+    {
+        self.roundhudbackground fadeOverTime(0.4);
+        self.roundhudbackground.alpha = 0;
+    }
+
+    // on attend la fin du fade puis on detruit proprement
+    wait 0.45;
+
+    if (isDefined(self.roundhud_small))
+        self.roundhud_small destroy();
+
+    if (isDefined(self.roundhudbackground))
+        self.roundhudbackground destroy();
+}
+
+NotifyRoundEnd()
+{
+    level.total = level.zombies_total;
+    a = true;
+
+    while (level.zombies_left > 0)
+    {
+        wait 0.1;
+
+        if (a && level.zombies_left == 1 && level.round > 3)
+        {
+            a = false;
+
+            foreach (zombie in level.zombie)
+            {
+                if (isDefined(zombie) && isDefined(zombie.hitbox))
+                {
+                    if (zombie.type == "normal")
+                    {
+                        foreach (player in level.players)
+                        {
+                            if (Distance(player.origin, zombie.origin) <= 300)
+                            {
+                                // rien ici
+                            }
+                        }
+                    }
+                    else if (zombie.type == "dog" || zombie.type == "insanity")
+                    {
+                        zombie thread maps\zm\gametypes\zombies::Zombie_Drop("maxammo");
+                    }
+                }
+            }
+        }
+    }
+
+    // fin de manche : animation de fin pour chaque joueur
+    foreach (player in level.players)
+    {
+        if (isDefined(player))
+            player thread doEndRoundHud();
+    }
+
+    level notify("end");
 }
 
 countEntities()

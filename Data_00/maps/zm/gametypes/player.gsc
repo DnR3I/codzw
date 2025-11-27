@@ -1314,22 +1314,6 @@ SpawnIntro()
 	self playlocalsound("UK_1mc_arena");
 	self.firstspawn = false;
 	self notify("intro_complete");
-	wait 5;
-	if(level.round == 1)
-	{
-	first_round = self createIcon("round_" + level.round, 30, 30);
-	first_round = self createFontString("objective", 4);
-	first_round setPoint("CENTER", "CENTER", 0, 0);
-	first_round setText("^1Round 1");
-	first_round.glowalpha = 1;
-	first_round.color = level.HUDCOLOR;
-	first_round.glowcolor = (255,0,0);
-	first_round fadeovertime(4);
-	first_round.alpha = 0;
-	first_round SetPulseFX(120, 4000, 400 );
-	wait 5;
-	first_round destroy();
-	}
 }
 /////////////////////// Challenges ///////////////////////////
 

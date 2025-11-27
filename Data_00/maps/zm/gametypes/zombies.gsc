@@ -1628,36 +1628,55 @@ DropToList()
     self.drop = [];
 
     self playlocalsound("mp_oldschool_pickup");
+
+    // INSTAKILL
     if(level.instakill == 1)
     {
         x = self.drop.size * 50;
         self.drop[0] = self createIcon("cardicon_fmj", 30,30);
-        self.drop[0] setPoint("CENTER", "CENTER", x, 150);        
-        self thread endInstakill();    
+        self.drop[0] setPoint("CENTER", "CENTER", x, 150);
+        self.drop[0].alpha = 1;
+        self thread endInstakill();
+
+        // BLINK sur les 5 dernières secondes
+        self thread InstakillIconBlink(self.drop[0]);
     }
-    self playlocalsound("mp_oldschool_spawn");        
+
+    self playlocalsound("mp_oldschool_spawn");
+
+    // x2
     if(level.multiplier == 2)
     {
         x = self.drop.size * 50;
-        self.drop[1] = self createIcon("cardicon_gold", 30, 30);    
+        self.drop[1] = self createIcon("cardicon_gold", 30, 30);
         self.drop[1] setPoint("CENTER", "CENTER", x, 150);
+        self.drop[1].alpha = 1;
         self thread endMultiplier();
+
+        // BLINK
+        self thread MultiplierIconBlink(self.drop[1]);
     }
-        
+
+    // FIRESALE
     if(level.firesale == 1)
     {
         x = self.drop.size * 50;
-        self.drop[2] = self createIcon("cardicon_bear", 30, 30);    
-        self.drop[2] setPoint("CENTER", "CENTER", x, 150);    
-        self thread endFiresale();    
+        self.drop[2] = self createIcon("cardicon_bear", 30, 30);
+        self.drop[2] setPoint("CENTER", "CENTER", x, 150);
+        self.drop[2].alpha = 1;
+        self thread endFiresale();
+
+        // BLINK
+        self thread FiresaleIconBlink(self.drop[2]);
     }
 
     level waittill_any("game_over");
-    
+
     if(isdefined(self.drop) && self.drop.size > 0)
         foreach(drop in self.drop)
             drop destroy();
 }
+
 endInstakill()
 {
 	self endon("disconnect");
@@ -1676,6 +1695,70 @@ endFiresale()
 	level waittill("end_firesale");
 	self thread DropToList();
 }
+InstakillIconBlink(icon)
+{
+	self endon("disconnect");
+	self endon("clear_powerup_wait");
+	level endon("game_over");
+
+	if (!isDefined(icon))
+		return;
+
+	// On attend la fin du temps (blinking sur les 5 dernières secondes)
+	while (level.instakill == 1 && level.instakilltime > 5)
+		wait 0.2;
+
+	while (level.instakill == 1 && isDefined(icon))
+	{
+		icon.alpha = 0.2;
+		wait 0.2;
+		icon.alpha = 1;
+		wait 0.2;
+	}
+}
+
+MultiplierIconBlink(icon)
+{
+	self endon("disconnect");
+	self endon("clear_powerup_wait");
+	level endon("game_over");
+
+	if (!isDefined(icon))
+		return;
+
+	while (level.multiplier == 2 && level.multipliertime > 5)
+		wait 0.2;
+
+	while (level.multiplier == 2 && isDefined(icon))
+	{
+		icon.alpha = 0.2;
+		wait 0.2;
+		icon.alpha = 1;
+		wait 0.2;
+	}
+}
+
+FiresaleIconBlink(icon)
+{
+	self endon("disconnect");
+	self endon("clear_powerup_wait");
+	level endon("game_over");
+
+	if (!isDefined(icon))
+		return;
+
+	while (level.firesale == 1 && level.firesaletime > 5)
+		wait 0.2;
+
+	while (level.firesale == 1 && isDefined(icon))
+	{
+		icon.alpha = 0.2;
+		wait 0.2;
+		icon.alpha = 1;
+		wait 0.2;
+	}
+}
+
 DropToList_Old(name) // not used anymore
 {
 	self notify(name);
@@ -2411,4 +2494,3 @@ Zombie_Eyes()
 		self.eye_left delete();
 	}
 }
-
