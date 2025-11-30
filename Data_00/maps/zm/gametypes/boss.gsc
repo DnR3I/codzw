@@ -543,35 +543,6 @@ LevitationSearch()
 		}
 	}
 }
-/////////////// George Romero aka Father //////////////////
-
-George()
-{
-	pos = getSpawnPosition();
-	portal = spawnFx(level.energybulb,pos+(0,0,40));
-	triggerfx(portal);
-	wait 3;
-	portal delete();
-	level.father = spawn("script_model", pos);
-	level.father setModel("georg"); // e missing bruh
-	level.father endon("zombie_dead");
-	level.father.type = "father";
-	level.father.mode = "idle";
-	level.father.inRage = 0;
-	level.father.hitted = 100;
-	level.father.hitbox = spawn("script_model", level.father getTagOrigin( "j_spine4" ) + (-5,0,-10));
-	level.father.hitbox setModel("com_plasticcase_beige_big");
-	level.father.hitbox.angles = (90,0,0);	
-	level.father.hitbox.health = getDvarInt("zombie_george_health");
-	level.father.hitbox CloneBrushmodelToScriptmodel(level.airDropCrateCollision);
-	level.father.hitbox setCanDamage(true);
-	level.father.hitbox enablelinkto();
-	level.father.hitbox linkto(level.father,"j_spine4");
-	level.father.hitbox hide();
-	level.father thread maps\zm\gametypes\zombies::Zombie_Health();	
-	level.father thread maps\zm\gametypes\zombies::Zombie_Move2();
-	level.father thread maps\zm\gametypes\zombies::Zombie_SticksOnPlayer();
-}
 
 
 

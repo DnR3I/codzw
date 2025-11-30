@@ -454,73 +454,10 @@ Zombie_Animation(mode,tesla)
 			player playlocalsound("US_1mc_control_taken");
 		}
 	}
-	else if(mode == "father_idle")
-	{
-		self.mode = "idle";
-		self scriptModelPlayAnim("fsm_georg_idle");
-	}
-	else if(mode == "father_walk")
-	{
-		self.mode = "walk";
-		self scriptModelPlayAnim("fsm_georg_walk");
-	}
-	else if(mode == "father_run")
-	{
-		self.mode = "run";
-		self.speed = 1.3;
-		self scriptModelPlayAnim("fsm_georg_run_attack"); // no run only anim? 
-	}
-	else if(mode == "father_attack_walk")
-	{
-		self.mode = "attack";
-		self scriptModelPlayAnim("fsm_georg_stand_attack"); 
-	}
-	else if(mode == "father_attack_run")
-	{
-		self.mode = "attack";
-		self scriptModelPlayAnim("fsm_georg_run_attack"); 
-	}
-	else if(mode == "father_death")
-	{
-		self scriptModelPlayAnim("fsm_georg_death");
-	}
 	else
 	{
 	    iPrintln("^1ERROR: ^3" + mode + " ^1could not be found!");
 	}
-}
-FatherDeath(time,respawn)
-{
-    if (!isDefined(time))
-        time = 0;
-    if (time > 0 && level.players.size > 1)
-        time = time / 2;
-
-    if (isDefined(self.hitbox))
-        self.hitbox delete();
-
-    if(isDefined(self.fire))
-        self.fire delete();
-
-    if(!isDefined(respawn) || !respawn || self.infinite)
-    {		
-        self notify("zombie_drop");	
-        self notify("zombie_dead");	
-    }	
-    else
-    {
-        self notify("zombie_respawn");	
-        level thread maps\zm\gametypes\boss::George();
-    }
-
-    self moveTo(self.origin,1);	
-    if (isDefined(self) && isAlive(self))
-        self thread Zombie_Animation("father_death");
-
-    PhysicsExplosionSphere(self.origin, 100, 100, 1 );
-    wait 3.5;
-    wait time;
-    self delete();		
 }
 
 Zombie_Death(time,respawn,newtype,tesla)
@@ -543,12 +480,6 @@ Zombie_Death(time,respawn,newtype,tesla)
 	else
 	{
 		self.alreadyCounted = true;
-	}
-
-	if(isDefined(level.father) && level.father == self)
-	{
-		self FatherDeath(time,respawn);
-		return;
 	}
 
     if(!isdefined(time))
@@ -634,11 +565,6 @@ Zombie_Death(time,respawn,newtype,tesla)
 
         	self.death_last_time = getTime();
     	}
-	}
-	else if (self.type == "father")
-	{
-    	foreach(player in level.players)
-        	player playLocalSound("fsm_georg_death"); // mort boss
 	}
 
 	level notify("zombie_died");
@@ -743,16 +669,6 @@ Zombie_Health()
             {
                 attacker.score += (10 * level.multiplier); 
             }
-            else if(self.type == "father")
-            {
-                if(self.hitbox.health != getDvarInt("zombie_george_health"))
-                {
-                    if(self.inRage == 0)
-                    {
-                        self notify("inRage");
-                    }
-                }
-            }
         }       
     }
 }
@@ -855,8 +771,6 @@ Zombie_Move2()
             self moveTo(self.origin, 0.05);
             if (self.type == "dog")
                 self Zombie_Animation("dog_idle");
-            else if (self.type == "father")
-                self Zombie_Animation("father_idle");
             else
                 self Zombie_Animation("idle");
 
@@ -928,8 +842,6 @@ Zombie_Move2()
                         self thread Zombie_Mode();
                     else if(self.type == "dog")
                         self thread Zombie_Animation("dog_run");
-                    else if(self.type == "father")
-                        self thread Zombie_Animation("father_walk");
                 }
 
                 self.target = target;
@@ -960,8 +872,6 @@ Zombie_Move2()
                     self thread Zombie_Animation("idle");
                 else if(self.type == "dog")
                     self thread Zombie_Animation("dog_idle");
-                else if(self.type == "father")
-                    self thread Zombie_Animation("father_idle");
 
                 self.hitted++;
             }
@@ -996,8 +906,8 @@ Zombie_Attack(target)
     self endon("zombie_reaim");
     level endon("game_over");
 
-	// s'assure que les sons d'attaque sont init
-	if (!isDefined(level.zombie_attack_sounds))
+    // s'assure que les sons d'attaque sont init
+    if (!isDefined(level.zombie_attack_sounds))
         initZombieAttackSounds();
 
     if (!isDefined(target) || !isAlive(target))
@@ -1017,44 +927,38 @@ Zombie_Attack(target)
         hitdist = 120;
         self thread Zombie_Animation("dog_attack");
     }
-    else if (self.type == "father")
-        self thread Zombie_Animation("father_attack_walk");
 
     wait 0.5;
 
-	// --- SONS D'ATTAQUE ---
-	if (self.type == "normal")
-	{
-    	if (!isDefined(self.attack_last_time)) self.attack_last_time = 0;
+    // --- SONS D'ATTAQUE ---
+    if (self.type == "normal")
+    {
+        if (!isDefined(self.attack_last_time))
+            self.attack_last_time = 0;
 
-    	if (getTime() - self.attack_last_time >= 300) // cooldown 300ms
-    	{
-        	sndName = level.zombie_attack_sounds[level.zombie_attack_index];
-        	self safePlaySound(sndName);
+        if (getTime() - self.attack_last_time >= 300) // cooldown 300ms
+        {
+            sndName = level.zombie_attack_sounds[level.zombie_attack_index];
+            self safePlaySound(sndName);
 
-        	level.zombie_attack_index++;
-        	if (level.zombie_attack_index >= level.zombie_attack_sounds.size)
-            	level.zombie_attack_index = 0;
+            level.zombie_attack_index++;
+            if (level.zombie_attack_index >= level.zombie_attack_sounds.size)
+                level.zombie_attack_index = 0;
 
-        	self.attack_last_time = getTime();
-    	}
-	}
-	else if (self.type == "dog")
-	{
-    	if (!isDefined(self.attack_last_time)) self.attack_last_time = 0;
+            self.attack_last_time = getTime();
+        }
+    }
+    else if (self.type == "dog")
+    {
+        if (!isDefined(self.attack_last_time))
+            self.attack_last_time = 0;
 
-    	if (getTime() - self.attack_last_time >= 600) // aboie moins souvent
-    	{
-        	foreach(player in level.players)
-            	player playLocalSound("US_1mc_control_taken");
-        	self.attack_last_time = getTime();
-    	}
-	}
-	else if (self.type == "father")
-	{
-    	foreach(player in level.players)
-        	player playLocalSound("fsm_georg_attack");
-
+        if (getTime() - self.attack_last_time >= 600) // aboie moins souvent
+        {
+            foreach (player in level.players)
+                player playLocalSound("US_1mc_control_taken");
+            self.attack_last_time = getTime();
+        }
     }
 
     // coup
@@ -1068,12 +972,11 @@ Zombie_Attack(target)
     }
 
     wait 0.5;
+
     if (self.type == "normal")
         self thread Zombie_Animation(self.mode);
     else if (self.type == "dog")
         self thread Zombie_Animation("dog_run");
-    else if (self.type == "father")
-        self thread Zombie_Animation("father_walk");
 
     self.attract = 0;
 }

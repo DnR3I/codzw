@@ -160,8 +160,6 @@ FreezeZombiesWhilePaused()
                         zombie thread maps\zm\gametypes\zombies::Zombie_Animation("dog_idle");
                     else if(zombie.type == "mech")
                         zombie thread maps\zm\gametypes\zombies::Zombie_Animation("idle");
-                    else if(zombie.type == "father")
-                        zombie thread maps\zm\gametypes\zombies::Zombie_Animation("father_idle");
                 }
             }
             wait 0.3;
@@ -179,8 +177,6 @@ FreezeZombiesWhilePaused()
                     zombie thread maps\zm\gametypes\zombies::Zombie_Animation("zombie.mode");
                 if(zombie.type == "dog")
                     zombie thread maps\zm\gametypes\zombies::Zombie_Animation("dog_run");
-                else if(zombie.type == "father")
-                    zombie thread maps\zm\gametypes\zombies::Zombie_Animation("father_walk");
                 else
                     zombie thread maps\zm\gametypes\zombies::Zombie_Animation(zombie.mode);
             }

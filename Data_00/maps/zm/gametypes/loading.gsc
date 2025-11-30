@@ -339,7 +339,6 @@ Init()
 	setDvarIfUnInitialized("dragon_health", 15000);
 	setDvarIfUnInitialized("dragon_health_brecourt", 5000);
 	setDvarIfUnInitialized("zombie_mech_health", 4000);	
-	setDvarIfUnInitialized("zombie_george_health",9999);
 	setDvar("scr_" + getDvar("g_gametype") + "_timelimit", 0);
 	setDvar("scr_" + getDvar("g_gametype") + "_scorelimit", 0);
 	setDvar("scr_teambalance",0);

@@ -34,8 +34,6 @@ System()
             level thread doAlduin_Afghan();
         else if(map == "mp_brecourt")
             level thread doAlduin_Wasteland();
-        else if(map == "mp_bsf_dead_night")
-            level thread doAlduin_NachtDerUntoten();
         else if(map == "mp_rust")
             level thread doAlduin_Rust();
     }	
@@ -64,8 +62,6 @@ System()
     bossround = getDvarInt("bossround");
     if(!isDefined(bossround) || bossround <= 0)
         bossround = 99;
-
-    georgeround = randomInt(5) + 4;
     doggy = 0;
     doground = [];
     doground[0] = RandomIntRange(4, 8); 
@@ -159,13 +155,6 @@ System()
             thread NotifyRoundEnd();
         else if(bossround != level.round)	
             thread NotifyRoundEnd();
-
-        if(level.round == georgeround)
-        {
-            level thread maps\zm\gametypes\boss::George();	
-            georgeround += randomInt(4);
-            georgeround++;
-        }	
 
         while(level.zombies_spawned < level.zombies_total)
         {
@@ -447,8 +436,6 @@ startEndGame(lastplayer,pos)
 		else if(zombie.type == "mech")
 			zombie thread maps\zm\gametypes\zombies::Zombie_Animation("idle");	
 	}
-	if(isDefined(level.father.hitbox))
-		level.father thread maps\zm\gametypes\zombies::Zombie_Animation("father_idle");
 	wait .1;
 	lastplayer.challengehud.alpha = 0;
 	Camera = spawn("script_model", pos+(0,100,100));
@@ -599,38 +586,6 @@ Dragon_DeathSound()
 		{
 			player safePlayLocalSound("PG_1mc_draw");
 		}
-	}
-}
-doAlduin_NachtDerUntoten()
-{
-	level endon("nachtboss");
-	flyto = [];
-	flyto[0] = (-1355.55, -5132.74, 1074.96);
-	flyto[1] = (-1526.2, -3395.41, 1249.91);
-	flyto[2] = (-2261.83, -1520.52, 1422.77);
-	flyto[3] = (-2281.94, 820.04, 1782.75);
-	flyto[4] = (-108.958, 2403.05, 1967.17);
-	flyto[5] = (1949.12, 1123.34, 2137.3);
-	flyto[6] = (3125.27, -1556.9, 1548.87);
-	flyto[7] = (2162.42, -3404.41, 1449.79);
-	dragon = spawn("script_model", flyto[0]);
-	level.dragon = dragon;
-	dragon.angles = (0, 84.9921, 0)+(0,90,0);
-	dragon setModel("zw2_alduin");
-	dragon scriptModelPlayAnim("zw2_alduin_fly_forward");
-	dragon.speed = 7;
-	dragon.setcandamage = true;
-	dragon thread maps\zm\gametypes\boss::Nachtboss();
-	dragon thread Dragon_Sound();
-	for(i = 1;i < flyto.size;i++)
-	{
-		time = distance(dragon.origin, flyto[i+1]) / (dragon.speed*100);
-	    dragon moveTo(flyTo[i+1],time);
-		movetoLoc = VectorToAngles(dragon.origin - flyto[i+1] );	
-	    dragon RotateTo((0,movetoLoc[1]+90,0),.2);		
-		wait time;
-		if(i == (flyto.size-1))
-			i = 0;
 	}
 }
 doAlduin_Rust()
