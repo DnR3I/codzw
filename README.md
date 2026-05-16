@@ -1,1 +1,1 @@
-CoDZW 1.0.0.0 BETA
+CoDZW 1.0.0.0
